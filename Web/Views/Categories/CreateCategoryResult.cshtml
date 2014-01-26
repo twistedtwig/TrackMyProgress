@@ -1,0 +1,27 @@
+﻿@using Web.Models
+@model GoalManagementLibrary.Models.CreateCategoryResult
+
+@{
+    ViewBag.Title = "The Category was not created.";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+        <li class="active">Create</li>
+    </ul>
+}
+
+
+@Html.AddResource(@<ul class="text-danger">
+            @foreach (var message in Model.Messages)
+            {
+                <li>@message</li>    
+            }
+        </ul>
+        , "errors")
+
+@Html.Partial("CreateCategory", Model.Request)
+

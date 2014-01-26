@@ -1,0 +1,20 @@
+﻿@using Web.Models
+
+@Html.AddResource(@<script src="~/Scripts/colorpicker.js"></script>, "bottomScripts") 
+@Html.AddResource(@<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#HexColour').ColorPicker({
+                onSubmit: function (hsb, hex, rgb, el) {
+                    $(el).val(hex);
+                    $(el).ColorPickerHide();
+                },
+                onBeforeShow: function () {
+                    $(this).ColorPickerSetColor(this.value);
+                }
+            })
+            .bind('keyup', function () {
+                $(this).ColorPickerSetColor(this.value);
+            });
+        });        
+    </script>, "bottomScripts") 

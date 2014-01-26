@@ -1,0 +1,48 @@
+﻿@using Web.Models
+@model GoalManagementLibrary.Models.CreateCategoryRequest
+
+@{
+    ViewBag.Title = "Add a new Category";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+        <li class="active">Create</li>
+    </ul>
+}
+
+
+@Html.Partial("_HexColourPicker")
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@Html.RenderResources("errors")
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="well">
+            @using (Html.BeginForm("CreateCategory", "Categories", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)        
+        
+                <fieldset>
+
+                    @Html.BootStrapEditorAndLabelFor(model => model.Name)
+                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour) 
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-2">
+                            <input type="submit" value="Create Category" class="btn btn-success" />
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

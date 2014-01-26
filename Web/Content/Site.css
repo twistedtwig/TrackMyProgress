@@ -1,0 +1,61 @@
+﻿body {
+    text-align: justify;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.navbar-brand {
+    padding:14px 15px 0 15px;
+    font-weight: bold;
+}
+
+.container img {
+    margin: 3px 15px;
+}
+
+
+.fc-selected-event-custom {
+    border-width: 2px;
+    border-color: black !important;
+}
+
+
+
+
+
+
+footer {
+    border-top: 1px #222222 solid;
+    padding: 25px 10px 10px 10px;
+}

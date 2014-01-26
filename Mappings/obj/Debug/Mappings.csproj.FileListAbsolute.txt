@@ -1,0 +1,11 @@
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Mappings.dll
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Mappings.pdb
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Behaviours.dll
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Models.dll
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Repository.Models.dll
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Behaviours.pdb
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Models.pdb
+D:\Google Drive\Development\GoalManagement\Mappings\bin\Debug\Repository.Models.pdb
+D:\Google Drive\Development\GoalManagement\Mappings\obj\Debug\Mappings.csprojResolveAssemblyReference.cache
+D:\Google Drive\Development\GoalManagement\Mappings\obj\Debug\Mappings.dll
+D:\Google Drive\Development\GoalManagement\Mappings\obj\Debug\Mappings.pdb

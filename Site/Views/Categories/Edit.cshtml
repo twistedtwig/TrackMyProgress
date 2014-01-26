@@ -1,0 +1,32 @@
+﻿@model Models.Category
+
+@{
+    ViewBag.Title = "Edit Category";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Edit", "Categories"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(x => x.Id)
+
+    <fieldset>
+        <legend>Create Category</legend>
+    
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+            
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+            
+        <p>
+            <input type="submit" value="Save Category" class="btn" />
+        </p>
+    </fieldset>
+}

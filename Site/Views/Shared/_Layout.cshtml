@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        <header>
+            <section id="login">
+                @Html.Partial("_LoginPartial")
+            </section>
+            <nav>
+                <ul id="menu" class="inline">                    
+                    <li>@Html.ActionLink("Goals", "Index", "Home", null, new { @class = "btn" })</li>
+                    <li>@Html.ActionLink("Manage Categories", "Index", "Categories", null, new { @class = "btn" })</li>
+                    <li>@Html.ActionLink("Manage Goals", "Index", "Goals", null, new { @class = "btn" })</li>
+                </ul>
+            </nav>
+        </header>
+        <div id="body">
+            @RenderBody()
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Need to have at least one Category";
+}
+<h1>@ViewBag.Title</h1>
+
+<section>
+    <p>Need to have at least one category to be able to create a Goal</p>
+    @Html.ActionLink("Create Categories", "CreateCategory", "Categories", null, new { @class = "btn" })
+</section>

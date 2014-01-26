@@ -1,0 +1,96 @@
+﻿@using Behaviours.Enums
+@model GoalManagementLibrary.Models.CreateGoalRequest
+
+@{
+    ViewBag.Title = "Create a new Goal";
+
+    var cats = new SelectList(Model.Categories, "Id", "Name");
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+    @using (Html.BeginForm("CreateGoal", "Goals")) {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+    
+        for (int i = 0; i < Model.Categories.Count; i++)
+        {
+            @Html.HiddenFor(x => x.Categories[i].Id)     
+            @Html.HiddenFor(x => x.Categories[i].Name)     
+        }
+        
+        <fieldset>
+            <legend>Create Category</legend>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+            </div>
+            
+            <div class="editor-label">
+                <label>Category</label>
+            </div>
+            
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.CategoryId, cats)
+            </div>
+
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ChangeValue)
+            </div>
+            
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ChangeValue)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UnitDescription)
+            </div>
+            
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UnitDescription)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.StartDate)
+            </div>
+            
+            <div class="editor-field">
+                @Html.EditorFor(model => model.StartDate)
+            </div>
+            
+            <div class="editor-label">
+                <label>Duration</label>
+            </div>
+            
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.GoalDurationTypeId, new SelectList(Enum.GetValues(typeof(GoalDurationType))))
+            </div>
+            
+            <div class="editor-label">
+                <label>Goal Type</label>
+            </div>
+            
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.GoalTypeId, new SelectList(Enum.GetValues(typeof(GoalType))))
+            </div>
+            
+            <div class="editor-label">
+                <label>Goal behaviour</label>
+            </div>
+            
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.GoalBehaviourTypeId, new SelectList(Enum.GetValues(typeof(GoalBehaviourType))))
+            </div>
+            
+            <p>
+                <input type="submit" value="Create" class="btn" />
+            </p>
+        </fieldset>
+    }
+

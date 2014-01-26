@@ -1,0 +1,50 @@
+﻿@using Web.Models
+@model Models.Goal
+
+@{
+    ViewBag.Title = "Delete Goal";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Goals", "Index", "GoalManagement")</li>
+        <li class="active">Delete</li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="well">
+            @using (Html.BeginForm("Delete", "GoalManagement", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(x => x.Id)
+
+                <fieldset>
+
+                   <div class="form-group">
+                        @Html.BootStrapLabelFor(model => model.Name)
+                                                
+                        @Html.TextBox("Name", Model.Name, new { @readonly="readonly" })
+                    </div>        
+                    
+                    <div class="form-group">
+                        <div class="col-lg-offset-2">
+                            <input type="submit" value="Delete Goal" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>
+
+
