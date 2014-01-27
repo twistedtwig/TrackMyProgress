@@ -13,7 +13,6 @@
                 @Html.HiddenFor(m => m.Date)
                 @Html.HiddenFor(m => m.EntryId)
                 
-
                 <h3>Goal: @Model.GoalName</h3>
                 
                 @Html.BootStrapReadonlyEditorAndLabelFor(m => m.Value, 3, 8, string.IsNullOrWhiteSpace(Model.Units) ? "Value" : Model.Units)

@@ -17,6 +17,15 @@
     </ul>
 }
 
+@Html.AddResource(@<script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#StartDate').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });        
+    </script>, "bottomScripts")
+
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
 </div>
@@ -42,20 +51,25 @@
                 <fieldset>
 
                     @Html.BootStrapEditorAndLabelFor(model => model.Name, 3, 8)
-
-                    @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 3, 8)
-                    
                     @Html.BootStrapEditorAndLabelFor(model => model.ShortName, 3, 8)
+                    @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 3, 8)
+
+                    <hr />                    
+
                     @Html.BootStrapEditorAndLabelFor(model => model.HexColour, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, 3, 8)
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
+
+                    <hr />                    
+                    
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 3, 8)
 
                     @Html.BootStrapEditorAndLabelFor(model => model.ChangeValue, 3, 8)
                     @Html.BootStrapEditorAndLabelFor(model => model.FirstIterationTarget, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, 3, 8)
 
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 3, 8)
+                    
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-3">

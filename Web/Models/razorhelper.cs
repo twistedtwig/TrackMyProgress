@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -8,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using System.Web.UI;
 using System.Web.WebPages;
 
 namespace Web.Models
@@ -45,6 +47,11 @@ namespace Web.Models
         }
 
         
+
+
+
+
+
         public static MvcHtmlString BootStrapLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int numberOfCols = 2)
         {
             return BootStrapLabelFor(html, expression, null, new Dictionary<string, object>(), numberOfCols);
@@ -85,21 +92,67 @@ namespace Web.Models
         }
         
 
-        public static MvcHtmlString BootStrapEditorFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, bool readOnly = false)
+
+
+
+
+        public static MvcHtmlString BootStrapEditorFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object additionalViewData = null, bool readOnly = false)
         {
-            var editor = html.EditorFor(expression);
-            var htmlString = editor.ToHtmlString();
-            if (!htmlString.Contains("class"))
+            var viewData = new ViewDataDictionary();
+            foreach (KeyValuePair<string, object> kvp in new RouteValueDictionary(additionalViewData))
             {
-                htmlString = htmlString.Substring(0, htmlString.Length - 3) + " class=\"\" />";
+                viewData[kvp.Key] = kvp.Value;
             }
-            if (readOnly)
+
+            if (!viewData.ContainsKey("class"))
             {
-                htmlString = htmlString.Substring(0, htmlString.Length - 3) + " readonly=\"true\" />";
+                viewData["class"] = string.Empty;
+            }
+
+            if (!viewData["class"].ToString().Contains("form-control"))
+            {
+                viewData["class"] = viewData["class"].ToString().Trim() + " form-control";
+            }
+
+            if (!viewData.ContainsKey("readonly") && readOnly)
+            {
+                viewData["readonly"] = "true";
+            }
+
+            var htmlString = html.EditorFor(expression).ToHtmlString();
+
+            foreach (var item in viewData)
+            {
+                if (!htmlString.Contains(item.Key))
+                {
+                    htmlString = htmlString.Substring(0, htmlString.Length - 3) + string.Format(" {0}=\"\" />", item.Key);                    
+                }
+
+                htmlString = htmlString.Replace(string.Format("{0}=\"", item.Key), string.Format("{0}=\"{1} ", item.Key, item.Value));
             }
             
-            return new MvcHtmlString(htmlString.Replace("class=\"", "class=\"form-control "));           
+            return new MvcHtmlString(htmlString);           
         }
+
+        public static MvcHtmlString BootStrapReadonlyEditorAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int labelCols = 2, int editorCols = 10, string labelText = null)
+        {
+            return new MvcHtmlString(BootStrapEditorTempate(html, expression, labelCols, editorCols, BootStrapEditorFor(html, expression, null, true), labelText).ToHtmlString());
+        }
+
+        public static MvcHtmlString BootStrapEditorAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int labelCols = 2, int editorCols = 10, string labelText = null)
+        {
+            return new MvcHtmlString(BootStrapEditorTempate(html, expression, labelCols, editorCols, BootStrapEditorFor(html, expression), labelText).ToHtmlString());
+        }
+
+        public static MvcHtmlString BootStrapEditorAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, object additionalViewData, int labelCols = 2, int editorCols = 10, string labelText = null)
+        {
+            return new MvcHtmlString(BootStrapEditorTempate(html, expression, labelCols, editorCols, BootStrapEditorFor(html, expression, additionalViewData), labelText).ToHtmlString());
+        }
+
+
+
+
+
         
         public static MvcHtmlString BootStrapDropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, IEnumerable<SelectListItem> selectList, object htmlAttributes, bool addPleaseSelect = true)
         {            
@@ -124,15 +177,7 @@ namespace Web.Models
             return htmlHelper.DropDownListFor(expression, selectList, atts);
         }
 
-        public static MvcHtmlString BootStrapReadonlyEditorAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int labelCols = 2, int editorCols = 10, string labelText = null)
-        {
-            return new MvcHtmlString(BootStrapEditorTempate(html, expression, labelCols, editorCols, BootStrapEditorFor(html, expression, true), labelText).ToHtmlString());
-        }
-
-        public static MvcHtmlString BootStrapEditorAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int labelCols = 2, int editorCols = 10, string labelText = null)
-        {
-            return new MvcHtmlString(BootStrapEditorTempate(html, expression, labelCols, editorCols, BootStrapEditorFor(html, expression), labelText).ToHtmlString());
-        }
+       
         
         public static MvcHtmlString BootStrapDropDownListForAndLabelFor<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, IEnumerable<SelectListItem> selectList, string labelText = null, int labelCols = 2, int editorCols = 10, bool addPleaseSelect = true)
         {
@@ -164,6 +209,10 @@ namespace Web.Models
             return BootStrapDropDownListForAndLabelFor(html, expression, GetEnumSelectList<Enum>(eEnum), labelText, labelCols, editorCols);
         }
 
+
+
+
+
         private static IEnumerable<SelectListItem> GetEnumSelectList<T>(Type eEnum)
         {            
             if (!(typeof (T).Equals(eEnum.BaseType)))
@@ -173,6 +222,9 @@ namespace Web.Models
 
             return (Enum.GetValues(eEnum).Cast<int>().Select(e => new SelectListItem { Text = Enum.GetName(eEnum, e), Value = e.ToString() })).ToList();
         }
+
+
+
 
         private static MvcHtmlString BootStrapEditorTempate<TModel, TValue>(this HtmlHelper<TModel> html, Expression<Func<TModel, TValue>> expression, int labelCols, int editorCols, MvcHtmlString editor, string labelText)
         {
@@ -194,6 +246,9 @@ namespace Web.Models
 
             return MvcHtmlString.Create(tagBuilder.ToString(TagRenderMode.Normal));
         }
+
+
+
 
         private static IEnumerable<SelectListItem> AddPleaseSelect(IList<SelectListItem> list)
         {

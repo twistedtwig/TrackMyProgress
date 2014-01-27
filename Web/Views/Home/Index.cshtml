@@ -6,18 +6,17 @@
     <h1>@ViewBag.Title</h1>
 </div>
 <section>
-    <img src="~/images/line_example1.jpg" class="pull-right" height="250px" />
+    <img src="~/images/line_example1.jpg" class="pull-right hidden-xs" height="250px" />
 
-    <p>Welcome to Goal Tracking.  The aim of this project is to track the progress and usage of different targets or achievements.</p>
+    <p>Goal Tracking allows a user to track the progress and usage of different targets or achievements.</p>
+    <p>The system allows a user to create categories and goals and track their progress.  Goal tracking happens over progressive iterations. An iteration can be of various 
+lengths, a day, week, month or a year.  The user would create a goal and record the data as they work towards that goal.</p>
+<p>An example Goal could be to track the number of miles ridden on the user's push bike each month.  The users aim could be to increase the amount by 10% per month (iteration). 
+ The user would enter the distance each time they ride the bike in the Tracker page. If the goal was started in January with an aim of doing 20 miles that month, Feburary's 
+target would be 22 miles, March's target would be 24.2 miles, and so on.</p>
+<p>The user could then see their results in the progress page.  Their they can analysis their goals, see how they are doing and see if they need to adjust their targets.  They 
+can also see how well they could be doing in the future given their current and previous performance.</p>
 
-    <p>The system allows a user to create categories and goals and track their progress.  Goal tracking happens over progressive durations.  So a goal will be split into N durations.
-        A duration can be of various lengths, a day, week, month or a year.  There are a few different type of goal types:</p>
-
-    <ul>
-        <li>Simple track a value.</li>
-        <li>Track a value and have it increment after each duration.</li>
-        <li>Track a value and have it decrement after each duration.</li>
-    </ul>
 </section>
 
 <div class="page-header">
@@ -25,10 +24,69 @@
 </div>
 
 <section>
-    <img src="~/images/createGoal.png" class="pull-right" />
-    <p>The user can create Goals</p>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <img src="~/images/createGoal.png" class="pull-right hidden-xs" />
+    
+<p>The user can create goals to keep track of their progress across time.  A Goal is made up of a few parts, such as a name, category, and type.  It defines what and how the 
+user wants to manage / track a value.</p>
+
+<p>A Goal is defined by a number of parameters.</p>
+
+<ul>
+	<li>Name</li>
+	<li>Short Name</li>
+	<li>Category</li>
+	<li>Display colour</li>
+	<li>Start Date</li>
+	<li>Duration</li>
+	<li>Goal Type</li>
+	<li>Goal Behaviour</li>
+	<li>The amount the target should change by</li>
+	<li>The first target</li>
+	<li>Description of the unit being messaged</li>
+</ul>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">Duration</div>
+        <div class="panel-body">
+            The duration relates to how long a single iteration lasts.  I.e. if the duration was set to a "week" then there would be four iterations per month.  At the start of a new 
+iteration the goal's target can change, (depending on the given goal and behaviour type).
+        </div>
+    </div>    
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Goal Type</div>
+        <div class="panel-body">
+            <p>There are three types of Goals:</p>
+            <ul>
+                <li>Change Something</li>
+                <li>Reach Something</li>
+                <li>Track Something</li>
+            </ul>
+            <p><strong>Change Something</strong> - The aim is to change a given value.  Such as having a goal of loosing weight.  The goal would be to change the user's current weight.</p>
+            <p><strong>Reach Something</strong> - The aim is to reach a given value.  For example exercising three times a week.  The user would record each time they exercise, with the 
+            target being three times per iteration, (weekly iteration).</p>
+            <p><strong>Track something</strong> - The aim is to simply track a given value.  There would be no increasing it each month or a certain goal, just record when and how much it 
+            occurs.</p>
+        </div>
+    </div>    
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">Goal Behaviour</div>
+        <div class="panel-body">
+            <p>There are five types of behaviour within a Goal:</p>
+            <ul>
+	            <li>Increase a value</li>
+	            <li>Increase a vlaue by a given percent</li>
+	            <li>Decrease a value</li>
+	            <li>Increase a vlaue by a given percent</li>
+	            <li>None</li>
+            </ul>
+
+            <p>In essense they can be boiled down into three, increase something, decrease soemthing or do not change it.  The behaviour will change the target value each iteration, it 
+            will either change by a given value, such as add ten to each each itheration, or it will change by a certain percantage, such as add ten percent to it each iteration.</p>
+        </div>
+    </div>    
+    
 </section>
 
 <div class="page-header">
@@ -36,11 +94,15 @@
 </div>
 
 <section>
-    <img src="~/images/line_example1.jpg" class="pull-right" height="250px" />
-    <p>The user can add / update the information for their goals.</p>
-       
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-    
+    <img src="~/images/updateProgress3.png" class="pull-right hidden-xs" />
+    <p>The user can add / update the information for their goals.</p>       
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
+essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+like Aldus PageMaker including versions of Lorem Ipsum.</p>    
     <p>The user can view their progress in the charts and via graphs.</p>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
+printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
+essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+like Aldus PageMaker including versions of Lorem Ipsum.</p>
 </section>

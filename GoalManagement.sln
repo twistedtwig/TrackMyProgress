@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", "{92819B45-549F-4507-BCD5-7E14B753F262}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoalManagementLibrary", "GoalManagementLibrary\GoalManagementLibrary.csproj", "{BDFA6818-806B-4903-9DC9-8F82A0D5F5F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{2F74EA6A-0D83-43FA-9CBC-76DDEBA693BC}"
@@ -27,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{92819B45-549F-4507-BCD5-7E14B753F262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92819B45-549F-4507-BCD5-7E14B753F262}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92819B45-549F-4507-BCD5-7E14B753F262}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92819B45-549F-4507-BCD5-7E14B753F262}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDFA6818-806B-4903-9DC9-8F82A0D5F5F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDFA6818-806B-4903-9DC9-8F82A0D5F5F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDFA6818-806B-4903-9DC9-8F82A0D5F5F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
