@@ -39,7 +39,7 @@
       <HintPath>..\packages\HoH-Non-Web-Utilitiy-Helpers.0.93\lib\net40\FileSystem.Helper.dll</HintPath>
     </Reference>
     <Reference Include="NhibernateRepository">
-      <HintPath>..\Site\bin\NhibernateRepository.dll</HintPath>
+      <HintPath>..\packages\NHibernate-Repository-Base.0.93\lib\net40\NhibernateRepository.dll</HintPath>
     </Reference>
     <Reference Include="ReflectionUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

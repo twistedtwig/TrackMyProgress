@@ -6,5 +6,335 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\temp\gm</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Behaviours.dll">
+      <publishTime>01/30/2014 12:42:56</publishTime>
+    </File>
+    <File Include="bin/Castle.Core.dll">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="bin/Castle.Windsor.dll">
+      <publishTime>01/30/2014 08:51:29</publishTime>
+    </File>
+    <File Include="bin/CustomConfigurations.dll">
+      <publishTime>01/30/2014 08:51:38</publishTime>
+    </File>
+    <File Include="bin/FluentNHibernate.dll">
+      <publishTime>01/30/2014 08:51:38</publishTime>
+    </File>
+    <File Include="bin/GoalInterfaces.dll">
+      <publishTime>01/30/2014 12:42:56</publishTime>
+    </File>
+    <File Include="bin/GoalManagementLibrary.dll">
+      <publishTime>01/30/2014 12:42:58</publishTime>
+    </File>
+    <File Include="bin/Iesi.Collections.dll">
+      <publishTime>01/30/2014 08:51:38</publishTime>
+    </File>
+    <File Include="bin/Mappings.dll">
+      <publishTime>01/30/2014 12:42:57</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>01/30/2014 08:51:37</publishTime>
+    </File>
+    <File Include="bin/Models.dll">
+      <publishTime>01/30/2014 12:42:56</publishTime>
+    </File>
+    <File Include="bin/Mvc.Helpers.dll">
+      <publishTime>01/30/2014 08:51:31</publishTime>
+    </File>
+    <File Include="bin/Mvc.Html.Helpers.dll">
+      <publishTime>01/30/2014 08:51:31</publishTime>
+    </File>
+    <File Include="bin/Mvc.Windsor.dll">
+      <publishTime>01/30/2014 08:51:38</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>01/30/2014 08:51:39</publishTime>
+    </File>
+    <File Include="bin/NHibernate.dll">
+      <publishTime>01/30/2014 08:51:39</publishTime>
+    </File>
+    <File Include="bin/NhibernateGoalsRepository.dll">
+      <publishTime>01/30/2014 12:42:57</publishTime>
+    </File>
+    <File Include="bin/NhibernateRepository.dll">
+      <publishTime>01/30/2014 08:51:39</publishTime>
+    </File>
+    <File Include="bin/NHibernateSchemaController.dll">
+      <publishTime>01/30/2014 08:51:39</publishTime>
+    </File>
+    <File Include="bin/Repository.Models.dll">
+      <publishTime>01/30/2014 12:42:56</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/30/2014 08:51:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>01/30/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/30/2014 08:51:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/30/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>01/30/2014 08:51:31</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>01/30/2014 08:51:31</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>01/30/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>01/30/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>01/30/2014 08:51:33</publishTime>
+    </File>
+    <File Include="bin/Web.dll">
+      <publishTime>01/30/2014 12:42:59</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>01/30/2014 10:03:38</publishTime>
+    </File>
+    <File Include="Content/bootswatch.css">
+      <publishTime>01/30/2014 10:43:45</publishTime>
+    </File>
+    <File Include="Content/colorpicker.css">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Content/datepicker.css">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Content/fullcalendar.css">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>01/30/2014 10:48:56</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/05/2013 08:40:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/05/2013 08:40:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/05/2013 08:40:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/05/2013 08:40:18</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="images/colourpicker/blank.gif">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_background.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_hex.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_hsb_b.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_hsb_h.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_hsb_s.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_indic.gif">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_overlay.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_rgb_b.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_rgb_g.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_rgb_r.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_select.gif">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/colorpicker_submit.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_background.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_hex.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_hsb_b.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_hsb_h.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_hsb_s.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_indic.gif">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_rgb_b.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_rgb_g.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_rgb_r.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/custom_submit.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/select.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/select2.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/colourpicker/slider.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="images/createGoal.png">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>01/30/2014 08:51:28</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap-datepicker.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/colorpicker.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/fullcalendar.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Scripts/tracker.js">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Categories/CreateCategory.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Categories/CreateCategoryResult.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Categories/Delete.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Categories/Edit.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Categories/Index.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/CreateGoal.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/CreateGoalResult.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/Delete.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/Edit.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/EditFailed.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/Index.cshtml">
+      <publishTime>01/30/2014 10:55:33</publishTime>
+    </File>
+    <File Include="Views/GoalManagement/NeedCategories.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_HexColourPicker.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/GoalSelector.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/Index.cshtml">
+      <publishTime>01/30/2014 10:52:42</publishTime>
+    </File>
+    <File Include="Views/Tracker/IterationAdditionChange.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/IterationAdditionReach.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/IterationDetail.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/IterationFailedToLoad.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/IterationSummary.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/Tracker/NoGoalsFound.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/30/2014 08:51:26</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/30/2014 12:43:09</publishTime>
+    </File>
+  </ItemGroup>
 </Project>
