@@ -52,7 +52,10 @@ input[type="checkbox"].input-validation-error {
 
 
 
-
+ 
+.spacer {
+    padding: 10px;
+}
 
 
 footer {

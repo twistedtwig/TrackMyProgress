@@ -1,5 +1,0 @@
-D:\Google Drive\Development\GoalManagement\Repository\Repository.Models\bin\Debug\Repository.Models.dll
-D:\Google Drive\Development\GoalManagement\Repository\Repository.Models\bin\Debug\Repository.Models.pdb
-D:\Google Drive\Development\GoalManagement\Repository\Repository.Models\obj\Debug\Repository.Models.csprojResolveAssemblyReference.cache
-D:\Google Drive\Development\GoalManagement\Repository\Repository.Models\obj\Debug\Repository.Models.dll
-D:\Google Drive\Development\GoalManagement\Repository\Repository.Models\obj\Debug\Repository.Models.pdb
