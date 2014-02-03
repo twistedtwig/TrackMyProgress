@@ -50,11 +50,17 @@ input[type="checkbox"].input-validation-error {
     border-color: black !important;
 }
 
-
+.chartArea {
+    height: 450px;
+}
 
  
 .spacer {
     padding: 10px;
+}
+
+.marginColumn {
+    margin-right: 10px;
 }
 
 

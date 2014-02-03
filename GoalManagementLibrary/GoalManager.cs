@@ -445,5 +445,111 @@ namespace GoalManagementLibrary
                 return true;
             }
         }
+
+        public GoalSummary GetGoalSummary(int goalId)
+        {
+            var goal = _goalRepository.First<GoalEntity>(g => g.Id == goalId);
+            var goalSummary = new GoalSummary();
+
+            if (goal == null)
+            {
+                goalSummary.GoalId = -1;
+                return goalSummary;
+            }
+
+            goalSummary.Title = goal.Name;
+            goalSummary.GoalId = goal.Id;
+            CalcuateIterations(goal.Intervals, goalSummary);
+            return goalSummary;
+        }
+
+        public IterationDetailInformationModel GetIterationDetailInfo(int goalId)
+        {
+            var goal = _goalRepository.First<GoalEntity>(x => x.Id == goalId);
+            if (goal == null) return null;
+
+            var detail = new IterationDetailInformationModel();
+            detail.GoalId = goal.Id;
+
+            foreach (var interval in goal.Intervals)
+            {
+                detail.Iterations.Add(new IterationSummary
+                    {
+                        IterationId = interval.Id,
+                        StartDate = interval.StartDate.Date.ToShortDateString(),
+                        EndDate = interval.EndDate.Date.ToShortDateString()
+                    });
+            }
+
+            return detail;
+        }
+
+        public GoalSummary GetIterationSummaries(int goalId, int[] iterationIds)
+        {
+            var goal = _goalRepository.First<GoalEntity>(g => g.Id == goalId);
+            var goalSummary = new GoalSummary();
+
+            if (iterationIds == null || iterationIds.Length == 0) return goalSummary;
+
+            if (goal == null)
+            {
+                goalSummary.GoalId = -1;
+                return goalSummary;
+            }
+
+            var iterationList = GetGoalIterationEntities(iterationIds, goal);
+
+            CalcuateIterations(iterationList, goalSummary);
+            return goalSummary;
+        }
+
+
+        public TwoLineReportViewModel GetIterationsReport(int goalId, int[] iterationIds)
+        {
+            var goal = _goalRepository.First<GoalEntity>(g => g.Id == goalId);
+            if (goal== null || iterationIds == null || iterationIds.Length == 0) return null;
+            
+            var iterationList = GetGoalIterationEntities(iterationIds, goal);
+            if (!iterationList.Any()) return null;
+
+            var reportModel = new TwoLineReportViewModel();
+            reportModel.Title = string.Format("{0} summary: {1} to {2}", goal.Name, iterationList.First().StartDate.Date.ToShortDateString(), iterationList.Last().EndDate.Date.ToShortDateString());
+
+            foreach (var entity in iterationList)
+            {
+                reportModel.ReportItems.Add(new TwoLineReportItem
+                    {
+                        Achieved = entity.Achieved,
+                        Target = entity.Target,
+                        XaxisValue = entity.StartDate.Date.ToShortDateString()
+                    });
+            }
+
+            return reportModel;
+        }
+
+        private void CalcuateIterations(IList<GoalIterationEntity> iterations, GoalSummary goalSummary)
+        {
+            goalSummary.NumberOfIterations = iterations.Count;
+            goalSummary.AvgEntriesPerIteration = iterations.Sum(x => x.Entries.Count) / iterations.Count;
+            goalSummary.AvgPercentageToTarget = iterations.Sum(x => x.Percentage) / iterations.Count;
+        }
+
+        private List<GoalIterationEntity> GetGoalIterationEntities(int[] iterationIds, GoalEntity goal)
+        {
+            var iterationList = new List<GoalIterationEntity>();
+            foreach (var id in iterationIds)
+            {
+                var iter = goal.Intervals.FirstOrDefault(x => x.Id == id);
+                if (iter != null)
+                {
+                    if (iterationList.All(x => x.Id != id))
+                    {
+                        iterationList.Add(iter);
+                    }
+                }
+            }
+            return iterationList;
+        }
     }
 }

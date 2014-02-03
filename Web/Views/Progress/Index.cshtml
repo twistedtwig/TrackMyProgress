@@ -1,0 +1,252 @@
+﻿@{
+    ViewBag.Title = "View your Progress";
+}
+
+@section scripts
+{  
+    
+    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.system.js"></script>
+    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.coreVector.js"></script>
+    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.advanced.js"></script>
+    <script type="text/javascript">
+
+        var getGoalId = function() {
+            return $('#selectedGoalId').text();
+        };
+        var iterations = [];
+
+        var setStartAndEndDateRange = function(startId, endId) {
+            $("#rangeStart").html("Start: " + iterations[startId].start);
+            $("#rangeEnd").html("End: " + iterations[endId].end);
+
+            $("#startIterationId").html(startId);
+            $("#endIterationId").html(endId);
+        };
+
+        var GetSelectedIterationIds = function() {
+            var startId = $('#startIterationId').text();
+            var endId = $('#endIterationId').text();
+
+            var ids = [];
+            for (var i = startId; i <= endId; i++) {
+                ids.push(iterations[i].id);
+            }
+
+            return ids;
+        };
+
+        var GetIterationsSummary = function() {           
+            $.ajax({
+                url: '@Url.Action("MultiIterationSummary", "Progress")',
+                data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
+                traditional: true,
+                success: function(data) {
+                    $('#iterationSummary').html(data);
+                },
+            });
+        };
+        
+        function LineChartWithMarkers(chart1) {
+            // RELEVANT CODE
+            chart1.setGallery(cfx.Gallery.Lines);
+            // END RELEVANT CODE
+            PopulateCarProduction(chart1);
+            var titles = chart1.getTitles();
+            var title = new cfx.TitleDockable();
+            title.setText("Vehicles Production by Month");
+            titles.add(title);
+        };
+        
+        function PopulateCarProduction(chart1) {
+            var items = [{
+                
+                "SUV": 695,
+                "Coupe": 535,
+                "Month": "Jan"
+            }, {
+                "Coupe": 395,
+                "SUV": 688,
+                "Month": "Feb"
+            }, {
+                "Coupe": 685,
+                "SUV": 1047,
+                "Month": "Mar"
+            }, {
+                "Coupe": 984,
+                "SUV": 1652,
+                "Month": "Apr"
+            }, {
+                "Coupe": 1579,
+                "SUV": 1889,
+                "Month": "May"
+            }, {
+                "Coupe": 1539,
+                "SUV": 1766,
+                "Month": "Jun"
+            }, {
+                "Coupe": 1489,
+                "SUV": 1361,
+                "Month": "Jul"
+            }, {
+                "Coupe": 650,
+                "SUV": 874,
+                "Month": "Aug"
+            }, {
+                "Coupe": 653,
+                "SUV": 693,
+                "Month": "Sep"
+            }, {
+                "Coupe": 2236,
+                "SUV": 786,
+                "Month": "Oct"
+            }, {
+                "Coupe": 1937,
+                "SUV": 599,
+                "Month": "Nov"
+            }, {                
+                "Coupe": 2138,
+                "SUV": 678,
+                "Month": "Dec"
+            }];
+
+
+            chart1.setDataSource(items);
+        };
+
+        var clearAllFormsAndRefresh = function() {
+            $('#goalselector').html("");
+            $('#goalSummary').html("");
+            $('#goaliterations').html("");            
+        };       
+        
+        $(document).ready(function () {
+            
+            var chart_LineChartWithMarkers = new cfx.Chart();
+            LineChartWithMarkers(chart_LineChartWithMarkers);
+            chart_LineChartWithMarkers.create(document.getElementById("chartdiv"));
+            $("#chartdiv").data("function", LineChartWithMarkers);
+
+
+            var id = [60, 61, 62, 63];
+
+
+            $.ajax({
+                url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData" })/Test',
+                 type: 'GET',
+                 dataType: 'json',
+                 traditional: true,
+                 data: { iterationIds: id, goalId: 7 },
+                 success: function (data) {
+
+                 }
+             });
+
+
+
+
+
+
+
+
+
+            
+            $.ajax({
+                url: '@Url.Action("GoalSelector", "Progress")',                    
+                    success: function(data) {
+                        $('#goalselector').html(data);
+                    },
+                });
+
+            $('#goalselector').on("change", "#goalSelectorDropDown", function() {
+
+                $('#selectedGoalId').html($("#goalSelectorDropDown option:selected").attr("value"));
+
+                $.ajax({
+                    url: '@Url.Action("GetIterationRangeSelector", "Progress")',
+                    success: function (data) {
+                        $('#goaliterations').html(data);
+                        
+                        $.ajax({
+                            url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData" })/GetIterationDetailInfo',
+                                    type: 'GET',
+                                    dataType: 'json',
+                                    data: { goalId: getGoalId() },
+                                    success: function (data) {
+
+                                        var numberIterations = data.Iterations.length - 1;
+
+                                        $.each(data.Iterations, function (key, item) {
+                                            iterations.push({
+                                                id: item.IterationId,
+                                                start: item.StartDate,
+                                                end: item.EndDate,
+                                            });
+                                        });
+                                        
+                                        $('#h-slider').slider({
+                                            range: true,
+                                            min: 0,
+                                            max: numberIterations,
+                                            values: [0, numberIterations],
+                                            slide: function (event, ui) {
+                                                setStartAndEndDateRange(ui.values[0], ui.values[1]);
+                                                GetIterationsSummary();
+                                            }
+                                        });
+                                        
+                                        setStartAndEndDateRange(0, numberIterations);
+                                        GetIterationsSummary();
+                                    }
+                        });
+                    }
+                });
+
+                $.ajax({
+                    url: '@Url.Action("GoalSummary", "Progress")',
+                    data: { goalId: $("#goalSelectorDropDown option:selected").attr("value") },
+                    success: function(data) {
+                        $('#goalSummary').html(data);
+                    },
+                });
+            });
+            
+        });
+    </script>    
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Progress</li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+@Html.Hidden("selectedGoalId")
+@Html.Hidden("startIterationId")
+@Html.Hidden("endIterationId")
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 marginColumn">
+            <div id="goalselector"></div>
+            <div id="goalSummary"></div>            
+        </div>
+        
+        <div class="col-lg-5">
+            <div id="goaliterations"></div>            
+            <div id="iterationSummary"></div>            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="chartdiv" class="chartArea"></div>                   
+        </div>
+    </div>
+</div>
+

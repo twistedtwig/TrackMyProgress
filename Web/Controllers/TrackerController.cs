@@ -32,7 +32,7 @@ namespace Web.Controllers
                 return PartialView("NoGoalsFound");
             }
 
-            return PartialView("GoalSelector", model);
+            return PartialView("_GoalSelector", model);
         }
 
         public ActionResult GetCurrentIteration(int goalId, DateTime selectedDate)

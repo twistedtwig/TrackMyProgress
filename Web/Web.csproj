@@ -124,6 +124,8 @@
     <Content Include="Content\colorpicker.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\fullcalendar.css" />
+    <Content Include="Content\jchartfx.css" />
+    <Content Include="Content\Jquery-ui-1.10.3.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -161,12 +163,14 @@
     <Content Include="images\createGoal.png" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\colorpicker.js" />
     <Content Include="Scripts\fullcalendar.js" />
+    <Content Include="Scripts\jChartFX\jchartfx.advanced.js" />
+    <Content Include="Scripts\jChartFX\jchartfx.coreVector.js" />
+    <Content Include="Scripts\jChartFX\jchartfx.system.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -182,6 +186,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\GoalDataController.cs" />
+    <Compile Include="Controllers\ProgressController.cs" />
     <Compile Include="Models\GoalIterationFailedToLoadSummary.cs" />
     <Compile Include="Controllers\GoalManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -199,7 +204,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -216,7 +220,7 @@
     <Content Include="Views\GoalManagement\EditFailed.cshtml" />
     <Content Include="Views\GoalManagement\Delete.cshtml" />
     <Content Include="Views\Tracker\Index.cshtml" />
-    <Content Include="Views\Tracker\GoalSelector.cshtml" />
+    <Content Include="Views\Shared\_GoalSelector.cshtml" />
     <Content Include="Views\Tracker\IterationAdditionReach.cshtml" />
     <Content Include="Views\Tracker\IterationAdditionChange.cshtml" />
     <Content Include="Views\Tracker\IterationSummary.cshtml" />
@@ -224,6 +228,11 @@
     <Content Include="Views\Tracker\IterationDetail.cshtml" />
     <Content Include="Views\Tracker\IterationFailedToLoad.cshtml" />
     <Content Include="Views\Tracker\NoGoalsFound.cshtml" />
+    <Content Include="Views\Progress\Index.cshtml" />
+    <Content Include="Views\Progress\_GoalSummary.cshtml" />
+    <Content Include="Views\Progress\_IterationsSummary.cshtml" />
+    <Content Include="Views\Progress\_IterationRangeSelector.cshtml" />
+    <Content Include="Views\Progress\_MultiIterationSummary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

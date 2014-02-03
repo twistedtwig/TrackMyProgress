@@ -8,11 +8,13 @@
     <title>@ViewBag.Title - Goal Management</title>
     <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
 
+    <link href="~/Content/Jquery-ui-1.10.3.css" rel="stylesheet" media="screen" />
+     <link rel="stylesheet" type="text/css" href="~/Content/jchartfx.css" />    
     <link href="~/Content/bootstrap.css" rel="stylesheet" media="screen" />
     <link href="~/Content/bootswatch.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar.css" rel="stylesheet" type="text/css" />    
     <link href="~/Content/colorpicker.css" rel="stylesheet" type="text/css" />    
-    <link href="~/Content/datepicker.css" rel="stylesheet" type="text/css" />    
+    <link href="~/Content/datepicker.css" rel="stylesheet" type="text/css" />       
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />    
 </head>
     <body>
@@ -31,6 +33,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     @Html.LiNavActionLink("Tracker", "Index", "Tracker")
+                    @Html.LiNavActionLink("Progress", "Index", "Progress")
                     @Html.LiNavActionLink("Manage Categories", "Index", "Categories")
                     @Html.LiNavActionLink("Manage Goals", "Index", "GoalManagement")
                 </ul>
@@ -52,6 +55,7 @@
         </div>
 
         <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.2.js"></script>
         <script src="~/Scripts/bootstrap.js"></script>
         <script src="~/Scripts/bootstrap-datepicker.js"></script>
         <script src="~/Scripts/tracker.js"></script>

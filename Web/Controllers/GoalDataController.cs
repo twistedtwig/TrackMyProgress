@@ -21,6 +21,24 @@ namespace Web.Controllers
             var x = _goalManager.GetTrackingInfoSummary(new GetTrackingSummaryRequest { StartDate = startDate, EndDate = endDate });
             return x;
         }
+
+        public IterationDetailInformationModel GetIterationDetailInfo(int goalId)
+        {
+            if (goalId <= 0) return null;
+            return _goalManager.GetIterationDetailInfo(goalId);
+        }
+
+        public TwoLineReportViewModel GetIterationReportModel([FromUri] int goalId, [FromUri] int[] iterationIds)
+        {
+            var ints = new int[3];
+            return _goalManager.GetIterationsReport(goalId, ints);
+        }
+
+        [HttpGet]
+        public TwoLineReportViewModel Test([FromUri] int[] iterationIds, int goalId)
+        {
+            return null;
+        }
     }
 
 }

@@ -289,3 +289,19 @@
   width: 16px;
   height: 16px;
 }
+
+.icon-arrow-left, .icon-arrow-right {
+    width: 16px;
+	height: 16px;
+	background-image: url("../images/ui-icons_222222_256x240.png");
+    background-repeat: no-repeat;
+    background-position: -80px -192px; 
+    
+    margin-left: -8px;
+    position: absolute; 
+    top: 11.6875px;    
+}
+
+.icon-arrow-right {   
+    background-position: -48px -192px; 
+}
