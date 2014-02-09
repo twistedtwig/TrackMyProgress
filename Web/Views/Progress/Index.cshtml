@@ -5,9 +5,10 @@
 @section scripts
 {  
     
-    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.system.js"></script>
-    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.coreVector.js"></script>
-    <script type="text/javascript" src="~/scripts/jChartFX/jchartfx.advanced.js"></script>
+    <script type="text/javascript" src="~/Scripts/jChartFX/jchartfx.system.js"></script>
+    <script type="text/javascript" src="~/Scripts/jChartFX/jchartfx.coreVector.js"></script>
+    <script type="text/javascript" src="~/Scripts/jChartFX/jchartfx.advanced.js"></script>
+    <script type="text/javascript" src="~/Scripts/charting.js"></script>
     <script type="text/javascript">
 
         var getGoalId = function() {
@@ -35,7 +36,33 @@
             return ids;
         };
 
-        var GetIterationsSummary = function() {           
+        var ProcessIterationDetails = function(startId, endId) {
+            setStartAndEndDateRange(startId, endId);
+            GetIterationsSummary();
+
+            $.ajax({
+                url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationReportModel"})',
+                type: 'GET',
+                dataType: 'json',
+                traditional: true,
+                data: { iterationIds: GetSelectedIterationIds(), goalId: getGoalId() },
+                success: function(data) {
+                    DefineIterationSummaryChart("iterationSummaryChart", data);
+                }
+            });
+            
+            $.ajax({
+                url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationDetailsReport"})',
+                type: 'GET',
+                dataType: 'json',
+                data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
+                success: function (data) {
+                    DefineIterationDetailChart("iterationDetailChart", data);
+                }
+            });
+        };
+
+        var GetIterationsSummary = function() {
             $.ajax({
                 url: '@Url.Action("MultiIterationSummary", "Progress")',
                 data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
@@ -45,117 +72,22 @@
                 },
             });
         };
-        
-        function LineChartWithMarkers(chart1) {
-            // RELEVANT CODE
-            chart1.setGallery(cfx.Gallery.Lines);
-            // END RELEVANT CODE
-            PopulateCarProduction(chart1);
-            var titles = chart1.getTitles();
-            var title = new cfx.TitleDockable();
-            title.setText("Vehicles Production by Month");
-            titles.add(title);
-        };
-        
-        function PopulateCarProduction(chart1) {
-            var items = [{
-                
-                "SUV": 695,
-                "Coupe": 535,
-                "Month": "Jan"
-            }, {
-                "Coupe": 395,
-                "SUV": 688,
-                "Month": "Feb"
-            }, {
-                "Coupe": 685,
-                "SUV": 1047,
-                "Month": "Mar"
-            }, {
-                "Coupe": 984,
-                "SUV": 1652,
-                "Month": "Apr"
-            }, {
-                "Coupe": 1579,
-                "SUV": 1889,
-                "Month": "May"
-            }, {
-                "Coupe": 1539,
-                "SUV": 1766,
-                "Month": "Jun"
-            }, {
-                "Coupe": 1489,
-                "SUV": 1361,
-                "Month": "Jul"
-            }, {
-                "Coupe": 650,
-                "SUV": 874,
-                "Month": "Aug"
-            }, {
-                "Coupe": 653,
-                "SUV": 693,
-                "Month": "Sep"
-            }, {
-                "Coupe": 2236,
-                "SUV": 786,
-                "Month": "Oct"
-            }, {
-                "Coupe": 1937,
-                "SUV": 599,
-                "Month": "Nov"
-            }, {                
-                "Coupe": 2138,
-                "SUV": 678,
-                "Month": "Dec"
-            }];
 
-
-            chart1.setDataSource(items);
-        };
 
         var clearAllFormsAndRefresh = function() {
             $('#goalselector').html("");
             $('#goalSummary').html("");
-            $('#goaliterations').html("");            
-        };       
-        
-        $(document).ready(function () {
-            
-            var chart_LineChartWithMarkers = new cfx.Chart();
-            LineChartWithMarkers(chart_LineChartWithMarkers);
-            chart_LineChartWithMarkers.create(document.getElementById("chartdiv"));
-            $("#chartdiv").data("function", LineChartWithMarkers);
+            $('#goaliterations').html("");
+        };
 
-
-            var id = [60, 61, 62, 63];
-
+        $(document).ready(function() {
 
             $.ajax({
-                url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData" })/Test',
-                 type: 'GET',
-                 dataType: 'json',
-                 traditional: true,
-                 data: { iterationIds: id, goalId: 7 },
-                 success: function (data) {
-
-                 }
-             });
-
-
-
-
-
-
-
-
-
-            
-            $.ajax({
-                url: '@Url.Action("GoalSelector", "Progress")',                    
-                    success: function(data) {
-                        $('#goalselector').html(data);
-                    },
-                });
+                url: '@Url.Action("GoalSelector", "Progress")',
+                success: function(data) {
+                    $('#goalselector').html(data);
+                },
+            });
 
             $('#goalselector').on("change", "#goalSelectorDropDown", function() {
 
@@ -163,40 +95,38 @@
 
                 $.ajax({
                     url: '@Url.Action("GetIterationRangeSelector", "Progress")',
-                    success: function (data) {
+                    success: function(data) {
                         $('#goaliterations').html(data);
-                        
+
                         $.ajax({
-                            url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData" })/GetIterationDetailInfo',
-                                    type: 'GET',
-                                    dataType: 'json',
-                                    data: { goalId: getGoalId() },
-                                    success: function (data) {
+                            url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationDetailInfo"})',
+                            type: 'GET',
+                            dataType: 'json',
+                            data: { goalId: getGoalId() },
+                            success: function(data) {
 
-                                        var numberIterations = data.Iterations.length - 1;
+                                var numberIterations = data.Iterations.length - 1;
 
-                                        $.each(data.Iterations, function (key, item) {
-                                            iterations.push({
-                                                id: item.IterationId,
-                                                start: item.StartDate,
-                                                end: item.EndDate,
-                                            });
-                                        });
-                                        
-                                        $('#h-slider').slider({
-                                            range: true,
-                                            min: 0,
-                                            max: numberIterations,
-                                            values: [0, numberIterations],
-                                            slide: function (event, ui) {
-                                                setStartAndEndDateRange(ui.values[0], ui.values[1]);
-                                                GetIterationsSummary();
-                                            }
-                                        });
-                                        
-                                        setStartAndEndDateRange(0, numberIterations);
-                                        GetIterationsSummary();
+                                $.each(data.Iterations, function(key, item) {
+                                    iterations.push({
+                                        id: item.IterationId,
+                                        start: item.StartDate,
+                                        end: item.EndDate,
+                                    });
+                                });
+
+                                $('#h-slider').slider({
+                                    range: true,
+                                    min: 0,
+                                    max: numberIterations,
+                                    values: [0, numberIterations],
+                                    slide: function(event, ui) {
+                                        ProcessIterationDetails(ui.values[0], ui.values[1]);
                                     }
+                                });
+
+                                ProcessIterationDetails(0, numberIterations);
+                            }
                         });
                     }
                 });
@@ -209,7 +139,7 @@
                     },
                 });
             });
-            
+
         });
     </script>    
 }
@@ -244,9 +174,11 @@
     </div>
     
     <div class="row">
-        <div class="col-lg-12">
-            <div id="chartdiv" class="chartArea"></div>                   
-        </div>
+        <div id="iterationSummaryChart" class="chartArea"></div>                                  
+    </div>
+    
+    <div class="row">
+        <div id="iterationDetailChart" class="chartArea"></div>                                  
     </div>
 </div>
 

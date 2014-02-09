@@ -34,7 +34,7 @@
             $('#calendar').fullCalendar({
                 events: function(start, end, callback) {
                     $.ajax({
-                        url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData" })/GetTrackingSummmary',
+                        url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData", Action = "GetTrackingSummmary" })',
                         type: 'GET',
                         dataType: 'json',
                         data: { startDate: convertDate(start), endDate: convertDate(end) },
@@ -198,4 +198,3 @@
         </div>
     </div>
 </div>
-

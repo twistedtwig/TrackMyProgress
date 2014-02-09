@@ -31,7 +31,7 @@ input[type="checkbox"].input-validation-error {
     color: #b94a48;
 }
 
-.validation-summary-valid {
+.validation-summary-valid { 
     display: none;
 }
 
@@ -51,7 +51,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .chartArea {
-    height: 450px;
+    height: 650px;
 }
 
  

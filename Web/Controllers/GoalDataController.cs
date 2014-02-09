@@ -28,17 +28,16 @@ namespace Web.Controllers
             return _goalManager.GetIterationDetailInfo(goalId);
         }
 
-        public TwoLineReportViewModel GetIterationReportModel([FromUri] int goalId, [FromUri] int[] iterationIds)
+        public IterationSummaryReportViewModel GetIterationReportModel([FromUri] int[] iterationIds, [FromUri] int goalId)
         {
-            var ints = new int[3];
-            return _goalManager.GetIterationsReport(goalId, ints);
+            return _goalManager.GetIterationsReport(goalId, iterationIds);
         }
 
-        [HttpGet]
-        public TwoLineReportViewModel Test([FromUri] int[] iterationIds, int goalId)
+        public IterationDetailReportViewModel GetIterationDetailsReport([FromUri] int goalId, [FromUri] int[] iterationIds)
         {
-            return null;
+            return _goalManager.GetIterationDetailsReport(goalId, iterationIds);
         }
+
     }
 
 }

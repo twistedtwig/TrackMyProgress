@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using Behaviours.Enums;
@@ -504,7 +505,39 @@ namespace GoalManagementLibrary
         }
 
 
-        public TwoLineReportViewModel GetIterationsReport(int goalId, int[] iterationIds)
+        public IterationDetailReportViewModel GetIterationDetailsReport(int goalId, int[] iterationIds)
+        {
+            var goal = _goalRepository.First<GoalEntity>(g => g.Id == goalId);
+            if (goal == null || iterationIds == null || iterationIds.Length == 0) return null;
+
+            var titles = goal.Intervals.Where(i => iterationIds.Contains(i.Id)).Select(interval => interval.StartDate.ToShortDateString() + " - " + interval.EndDate.ToShortDateString()).ToList();
+
+            var model = new IterationDetailReportViewModel(goal.IntervalDurationId, titles);
+            model.Title = "Iteration Details Report";
+            model.UnitDesciption = goal.UnitDescription;
+            
+            foreach (var interval in goal.Intervals)
+            {
+                if(!iterationIds.Contains(interval.Id))
+                {
+                    continue;
+                }
+
+                var startDate = interval.StartDate;
+                foreach (var entry in interval.Entries)
+                {
+                    TimeSpan span = entry.Date - startDate;
+                    var dayInt = span.Days;
+
+                    model.Add(dayInt, interval.StartDate.ToShortDateString() + " - " + interval.EndDate.ToShortDateString(), entry.Amount);
+                }
+            }
+
+            model.Organize();
+            return model;
+        }
+
+        public IterationSummaryReportViewModel GetIterationsReport(int goalId, int[] iterationIds)
         {
             var goal = _goalRepository.First<GoalEntity>(g => g.Id == goalId);
             if (goal== null || iterationIds == null || iterationIds.Length == 0) return null;
@@ -512,17 +545,60 @@ namespace GoalManagementLibrary
             var iterationList = GetGoalIterationEntities(iterationIds, goal);
             if (!iterationList.Any()) return null;
 
-            var reportModel = new TwoLineReportViewModel();
-            reportModel.Title = string.Format("{0} summary: {1} to {2}", goal.Name, iterationList.First().StartDate.Date.ToShortDateString(), iterationList.Last().EndDate.Date.ToShortDateString());
+            var reportModel = new IterationSummaryReportViewModel();
+            reportModel.UnitDescription = goal.UnitDescription;
+            reportModel.Title = string.Format("{0} Iteration Summary: {1} to {2}", goal.Name, iterationList.First().StartDate.Date.ToShortDateString(), iterationList.Last().EndDate.Date.ToShortDateString());
 
             foreach (var entity in iterationList)
             {
-                reportModel.ReportItems.Add(new TwoLineReportItem
+                reportModel.ReportItems.Add(new IterationSummaryItem
                     {
                         Achieved = entity.Achieved,
                         Target = entity.Target,
                         XaxisValue = entity.StartDate.Date.ToShortDateString()
                     });
+            }
+
+            //find average increase per iteration
+            IList<double> variance = new List<double>();
+
+            double? previousValue = null;
+            foreach (var iteration in iterationList)
+            {
+                if (!previousValue.HasValue)
+                {
+                    previousValue = iteration.Achieved;
+                    continue;
+                }
+
+                variance.Add(((iteration.Achieved - previousValue.Value) / previousValue.Value) * 100);
+                previousValue = iteration.Achieved;
+            }
+
+            var avgVariance = variance.Sum() / variance.Count;
+
+            //find last iteration total
+            double lastTotal = iterationList.Aggregate<GoalIterationEntity, double>(0, (current, it) => it.Achieved > 0 ? it.Achieved : current);
+
+            //create 6 more iterations
+            int numberOfTrendIterations = 6;
+            var currentStartDate = iterationList.Last().StartDate;
+            var iterationDates = new List<DateTime>();
+            for (int i = 0; i < numberOfTrendIterations; i++)
+            {
+                var endDate = DateHelper.GetEndOfDuration((GoalDurationType) goal.IntervalDurationId, currentStartDate);
+                currentStartDate = DateHelper.GetStartOfDuration((GoalDurationType)goal.IntervalDurationId, endDate.AddDays(1));
+                
+                iterationDates.Add(currentStartDate);                
+            }
+
+            //for each new iteration increase value by total * avg increment
+            double runningTotal = lastTotal;
+
+            foreach (var date in iterationDates)
+            {
+                runningTotal = runningTotal * ((avgVariance / 100) +1);
+                reportModel.Trend.Add(new Trend(runningTotal, date.ToShortDateString()));
             }
 
             return reportModel;
@@ -532,7 +608,7 @@ namespace GoalManagementLibrary
         {
             goalSummary.NumberOfIterations = iterations.Count;
             goalSummary.AvgEntriesPerIteration = iterations.Sum(x => x.Entries.Count) / iterations.Count;
-            goalSummary.AvgPercentageToTarget = iterations.Sum(x => x.Percentage) / iterations.Count;
+            goalSummary.AvgPercentageToTarget = Math.Round(iterations.Sum(x => x.Percentage) / iterations.Count);
         }
 
         private List<GoalIterationEntity> GetGoalIterationEntities(int[] iterationIds, GoalEntity goal)

@@ -46,11 +46,11 @@
                     @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 3, 8)
                     
                     @Html.BootStrapEditorAndLabelFor(model => model.ShortName, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off" }, 3, 8)
 
                     @Html.BootStrapEditorAndLabelFor(model => model.ChangeValue, 3, 8)
                     @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete="off" }, 3, 8)
 
                     @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
                     @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)

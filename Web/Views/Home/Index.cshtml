@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Mvc.Html.Helpers
+@{
     ViewBag.Title = "Goal Tracking";
 }
 
@@ -6,16 +7,16 @@
     <h1>@ViewBag.Title</h1>
 </div>
 <section>
-    <img src="~/images/line_example1.jpg" class="pull-right hidden-xs" height="250px" />
-
+    <a href="~/images/tracking-lg.png" class="image-link"><img src="~/images/tracking-sm.png" class="pull-right hidden-xs" /></a>
+    
     <p>Goal Tracking allows a user to track the progress and usage of different targets or achievements.</p>
     <p>The system allows a user to create categories and goals and track their progress.  Goal tracking happens over progressive iterations. An iteration can be of various 
-lengths, a day, week, month or a year.  The user would create a goal and record the data as they work towards that goal.</p>
-<p>An example Goal could be to track the number of miles ridden on the user's push bike each month.  The users aim could be to increase the amount by 10% per month (iteration). 
- The user would enter the distance each time they ride the bike in the Tracker page. If the goal was started in January with an aim of doing 20 miles that month, Feburary's 
-target would be 22 miles, March's target would be 24.2 miles, and so on.</p>
-<p>The user could then see their results in the progress page.  Their they can analysis their goals, see how they are doing and see if they need to adjust their targets.  They 
-can also see how well they could be doing in the future given their current and previous performance.</p>
+        lengths, a day, week, month or a year.  The user would create a goal and record the data as they work towards that goal.</p>
+    <p>An example Goal could be to track the number of miles ridden on the user's push bike each month.  The users aim could be to increase the amount by 10% per month (iteration). 
+        The user would enter the distance each time they ride the bike in the Tracker page. If the goal was started in January with an aim of doing 20 miles that month, Feburary's 
+        target would be 22 miles, March's target would be 24.2 miles, and so on.</p>
+    <p>The user could then see their results in the progress page.  Their they can analysis their goals, see how they are doing and see if they need to adjust their targets.  They 
+        can also see how well they could be doing in the future given their current and previous performance.</p>
 
 </section>
 
@@ -24,7 +25,7 @@ can also see how well they could be doing in the future given their current and 
 </div>
 
 <section>
-    <img src="~/images/createGoal.png" class="pull-right hidden-xs" />
+    <a href="~/images/createGoal-lg.png" class="image-link"><img src="~/images/createGoal-sm.png" class="pull-right hidden-xs" /></a>
     
 <p>The user can create goals to keep track of their progress across time.  A Goal is made up of a few parts, such as a name, category, and type.  It defines what and how the 
 user wants to manage / track a value.</p>
@@ -94,15 +95,26 @@ iteration the goal's target can change, (depending on the given goal and behavio
 </div>
 
 <section>
-    <img src="~/images/updateProgress3.png" class="pull-right hidden-xs" />
+    <a href="~/images/tracker-lg.png" class="image-link"><img src="~/images/tracker-sm.png" class="pull-right hidden-xs" /></a>
+
     <p>The user can add / update the information for their goals.</p>       
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
-printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
-like Aldus PageMaker including versions of Lorem Ipsum.</p>    
+        printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
+        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.</p>    
     <p>The user can view their progress in the charts and via graphs.</p>
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown 
-printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
-like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
+        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software 
+        like Aldus PageMaker including versions of Lorem Ipsum.</p>
 </section>
+
+@Html.AddResource(
+    @<script type="text/javascript">
+         $("document").ready(function() {
+             $(document).ready(function () {
+                 $('.image-link').magnificPopup({ type: 'image' });
+             });
+         });
+     </script>, "bottomScripts")
+

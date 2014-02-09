@@ -47,8 +47,9 @@
     <Compile Include="GoalSummary.cs" />
     <Compile Include="IterationDetail.cs" />
     <Compile Include="IterationDetailInformationModel.cs" />
+    <Compile Include="IterationDetailReportViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwoLineReportViewModel.cs" />
+    <Compile Include="IterationSummaryReportViewModel.cs" />
     <Compile Include="TrackingSummary.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -101,7 +101,7 @@ namespace Web.Models
             var viewData = new ViewDataDictionary();
             foreach (KeyValuePair<string, object> kvp in new RouteValueDictionary(additionalViewData))
             {
-                viewData[kvp.Key] = kvp.Value;
+                viewData[kvp.Key] = kvp.Value.ToString().Trim();
             }
 
             if (!viewData.ContainsKey("class"))
@@ -128,7 +128,14 @@ namespace Web.Models
                     htmlString = htmlString.Substring(0, htmlString.Length - 3) + string.Format(" {0}=\"\" />", item.Key);                    
                 }
 
-                htmlString = htmlString.Replace(string.Format("{0}=\"", item.Key), string.Format("{0}=\"{1} ", item.Key, item.Value));
+                if (htmlString.Contains(string.Format("{0}=\"\"", item.Key)))
+                {
+                    htmlString = htmlString.Replace(string.Format("{0}=\"", item.Key), string.Format("{0}=\"{1}", item.Key, item.Value));                    
+                }
+                else
+                {
+                    htmlString = htmlString.Replace(string.Format("{0}=\"", item.Key), string.Format("{0}=\"{1} ", item.Key, item.Value));                    
+                }
             }
             
             return new MvcHtmlString(htmlString);           

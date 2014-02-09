@@ -10,112 +10,121 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Behaviours.dll">
-      <publishTime>01/30/2014 12:42:56</publishTime>
+      <publishTime>02/09/2014 22:52:34</publishTime>
     </File>
     <File Include="bin/Castle.Core.dll">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>01/25/2014 21:03:53</publishTime>
     </File>
     <File Include="bin/Castle.Windsor.dll">
-      <publishTime>01/30/2014 08:51:29</publishTime>
+      <publishTime>01/24/2014 22:01:04</publishTime>
     </File>
     <File Include="bin/CustomConfigurations.dll">
-      <publishTime>01/30/2014 08:51:38</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/FluentNHibernate.dll">
-      <publishTime>01/30/2014 08:51:38</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/GoalInterfaces.dll">
-      <publishTime>01/30/2014 12:42:56</publishTime>
+      <publishTime>02/09/2014 22:52:34</publishTime>
     </File>
     <File Include="bin/GoalManagementLibrary.dll">
-      <publishTime>01/30/2014 12:42:58</publishTime>
+      <publishTime>02/09/2014 22:52:36</publishTime>
     </File>
     <File Include="bin/Iesi.Collections.dll">
-      <publishTime>01/30/2014 08:51:38</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/Mappings.dll">
-      <publishTime>01/30/2014 12:42:57</publishTime>
+      <publishTime>02/09/2014 22:52:35</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
-      <publishTime>01/30/2014 08:51:37</publishTime>
+      <publishTime>01/24/2014 22:01:06</publishTime>
     </File>
     <File Include="bin/Models.dll">
-      <publishTime>01/30/2014 12:42:56</publishTime>
+      <publishTime>02/09/2014 22:52:34</publishTime>
     </File>
     <File Include="bin/Mvc.Helpers.dll">
-      <publishTime>01/30/2014 08:51:31</publishTime>
+      <publishTime>01/24/2014 22:01:04</publishTime>
     </File>
     <File Include="bin/Mvc.Html.Helpers.dll">
-      <publishTime>01/30/2014 08:51:31</publishTime>
+      <publishTime>01/24/2014 22:01:04</publishTime>
     </File>
     <File Include="bin/Mvc.Windsor.dll">
-      <publishTime>01/30/2014 08:51:38</publishTime>
+      <publishTime>01/25/2014 21:04:30</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>01/30/2014 08:51:39</publishTime>
+      <publishTime>01/24/2014 22:01:06</publishTime>
     </File>
     <File Include="bin/NHibernate.dll">
-      <publishTime>01/30/2014 08:51:39</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/NhibernateGoalsRepository.dll">
-      <publishTime>01/30/2014 12:42:57</publishTime>
+      <publishTime>02/09/2014 22:52:35</publishTime>
     </File>
     <File Include="bin/NhibernateRepository.dll">
-      <publishTime>01/30/2014 08:51:39</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/NHibernateSchemaController.dll">
-      <publishTime>01/30/2014 08:51:39</publishTime>
+      <publishTime>01/24/2014 22:01:38</publishTime>
     </File>
     <File Include="bin/Repository.Models.dll">
-      <publishTime>01/30/2014 12:42:56</publishTime>
+      <publishTime>02/09/2014 22:52:34</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
-      <publishTime>01/30/2014 08:51:32</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Helpers.dll">
-      <publishTime>01/30/2014 08:51:33</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Http.dll">
-      <publishTime>01/30/2014 08:51:32</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Http.WebHost.dll">
-      <publishTime>01/30/2014 08:51:33</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
-      <publishTime>01/30/2014 08:51:31</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Razor.dll">
-      <publishTime>01/30/2014 08:51:31</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Deployment.dll">
-      <publishTime>01/30/2014 08:51:33</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.dll">
-      <publishTime>01/30/2014 08:51:33</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/System.Web.Webpages.Razor.dll">
-      <publishTime>01/30/2014 08:51:33</publishTime>
+      <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>01/30/2014 12:42:59</publishTime>
+      <publishTime>02/09/2014 22:54:13</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
-      <publishTime>01/30/2014 10:03:38</publishTime>
+      <publishTime>01/31/2014 07:27:43</publishTime>
     </File>
     <File Include="Content/bootswatch.css">
-      <publishTime>01/30/2014 10:43:45</publishTime>
+      <publishTime>01/31/2014 07:27:43</publishTime>
     </File>
     <File Include="Content/colorpicker.css">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/25/2014 21:47:49</publishTime>
     </File>
     <File Include="Content/datepicker.css">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>02/02/2014 22:12:18</publishTime>
     </File>
     <File Include="Content/fullcalendar.css">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>09/01/2013 01:34:20</publishTime>
+    </File>
+    <File Include="Content/jchartfx.css">
+      <publishTime>05/10/2013 20:54:57</publishTime>
+    </File>
+    <File Include="Content/Jquery-ui-1.10.3.css">
+      <publishTime>02/02/2014 21:44:54</publishTime>
+    </File>
+    <File Include="Content/magnific-popup.css">
+      <publishTime>02/09/2014 21:11:56</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>01/30/2014 10:48:56</publishTime>
+      <publishTime>02/09/2014 15:01:42</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>12/05/2013 08:40:18</publishTime>
@@ -130,109 +139,181 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/05/2013 08:40:18</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:37:04</publishTime>
     </File>
     <File Include="images/colourpicker/blank.gif">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_background.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_hex.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_hsb_b.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_hsb_h.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_hsb_s.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_indic.gif">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_overlay.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:16</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_rgb_b.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_rgb_g.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_rgb_r.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_select.gif">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/colorpicker_submit.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_background.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_hex.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_hsb_b.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_hsb_h.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_hsb_s.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_indic.gif">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_rgb_b.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_rgb_g.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_rgb_r.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/custom_submit.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/select.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/select2.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
     </File>
     <File Include="images/colourpicker/slider.png">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>08/22/2008 17:53:18</publishTime>
+    </File>
+    <File Include="images/createGoal-lg.png">
+      <publishTime>02/09/2014 22:19:26</publishTime>
+    </File>
+    <File Include="images/createGoal-sm.png">
+      <publishTime>02/09/2014 22:19:55</publishTime>
     </File>
     <File Include="images/createGoal.png">
       <publishTime>01/30/2014 08:51:28</publishTime>
     </File>
+    <File Include="images/favicon.ico">
+      <publishTime>01/23/2014 10:15:00</publishTime>
+    </File>
+    <File Include="images/tracker-lg.png">
+      <publishTime>02/09/2014 21:17:14</publishTime>
+    </File>
+    <File Include="images/tracker-sm.png">
+      <publishTime>02/09/2014 21:18:12</publishTime>
+    </File>
+    <File Include="images/tracking-sm.png">
+      <publishTime>02/09/2014 22:14:32</publishTime>
+    </File>
+    <File Include="images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_glass_75_ffffff_1x400.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-bg_inset-soft_95_fef1ec_1x100.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_222222_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_2e83ff_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_454545_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_888888_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
+    <File Include="images/ui-icons_f6cf3b_256x240.png">
+      <publishTime>01/23/2013 16:12:42</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>01/30/2014 08:51:28</publishTime>
+      <publishTime>01/25/2014 21:04:32</publishTime>
     </File>
     <File Include="Scripts/bootstrap-datepicker.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>06/12/2013 20:06:52</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>12/05/2013 08:40:18</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>01/30/2014 08:51:26</publishTime>
     </File>
+    <File Include="Scripts/charting.js">
+      <publishTime>02/09/2014 20:18:49</publishTime>
+    </File>
     <File Include="Scripts/colorpicker.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>05/23/2009 14:32:36</publishTime>
     </File>
     <File Include="Scripts/fullcalendar.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>09/01/2013 01:34:20</publishTime>
+    </File>
+    <File Include="Scripts/jChartFX/jchartfx.advanced.js">
+      <publishTime>10/23/2013 18:17:39</publishTime>
+    </File>
+    <File Include="Scripts/jChartFX/jchartfx.coreVector.js">
+      <publishTime>10/23/2013 18:18:32</publishTime>
+    </File>
+    <File Include="Scripts/jChartFX/jchartfx.system.js">
+      <publishTime>10/23/2013 18:17:54</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:02</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.min.js">
       <publishTime>01/30/2014 08:51:26</publishTime>
@@ -240,101 +321,125 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-1.10.2.min.map">
       <publishTime>01/30/2014 08:51:26</publishTime>
     </File>
+    <File Include="Scripts/jquery-ui-1.10.2.js">
+      <publishTime>02/02/2014 21:05:12</publishTime>
+    </File>
+    <File Include="Scripts/jquery.magnific-popup.js">
+      <publishTime>02/09/2014 21:12:32</publishTime>
+    </File>
     <File Include="Scripts/jquery.validate.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:04</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.min.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:04</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:04</publishTime>
     </File>
     <File Include="Scripts/jquery.validate.unobtrusive.min.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:04</publishTime>
     </File>
     <File Include="Scripts/modernizr-2.6.2.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:05</publishTime>
     </File>
     <File Include="Scripts/tracker.js">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/26/2014 21:22:41</publishTime>
     </File>
     <File Include="Views/Categories/CreateCategory.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/25/2014 22:35:56</publishTime>
     </File>
     <File Include="Views/Categories/CreateCategoryResult.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 14:37:17</publishTime>
     </File>
     <File Include="Views/Categories/Delete.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 17:37:18</publishTime>
     </File>
     <File Include="Views/Categories/Edit.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/25/2014 22:36:26</publishTime>
     </File>
     <File Include="Views/Categories/Index.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 14:08:37</publishTime>
     </File>
     <File Include="Views/GoalManagement/CreateGoal.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>02/09/2014 22:49:59</publishTime>
     </File>
     <File Include="Views/GoalManagement/CreateGoalResult.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 14:32:52</publishTime>
     </File>
     <File Include="Views/GoalManagement/Delete.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 21:15:54</publishTime>
     </File>
     <File Include="Views/GoalManagement/Edit.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>02/09/2014 22:50:36</publishTime>
     </File>
     <File Include="Views/GoalManagement/EditFailed.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/20/2014 16:24:51</publishTime>
     </File>
     <File Include="Views/GoalManagement/Index.cshtml">
-      <publishTime>01/30/2014 10:55:33</publishTime>
+      <publishTime>01/31/2014 07:27:43</publishTime>
     </File>
     <File Include="Views/GoalManagement/NeedCategories.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/19/2014 20:45:05</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>02/09/2014 22:18:07</publishTime>
+    </File>
+    <File Include="Views/Progress/Index.cshtml">
+      <publishTime>02/09/2014 15:05:02</publishTime>
+    </File>
+    <File Include="Views/Progress/_GoalSummary.cshtml">
+      <publishTime>02/03/2014 20:24:35</publishTime>
+    </File>
+    <File Include="Views/Progress/_IterationRangeSelector.cshtml">
+      <publishTime>02/03/2014 19:00:41</publishTime>
+    </File>
+    <File Include="Views/Progress/_IterationsSummary.cshtml">
+      <publishTime>02/02/2014 21:19:35</publishTime>
+    </File>
+    <File Include="Views/Progress/_MultiIterationSummary.cshtml">
+      <publishTime>02/03/2014 20:28:25</publishTime>
+    </File>
+    <File Include="Views/Shared/_GoalSelector.cshtml">
+      <publishTime>01/26/2014 21:10:43</publishTime>
     </File>
     <File Include="Views/Shared/_HexColourPicker.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/25/2014 22:24:27</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>02/09/2014 21:13:08</publishTime>
     </File>
     <File Include="Views/Tracker/GoalSelector.cshtml">
       <publishTime>01/30/2014 08:51:26</publishTime>
     </File>
     <File Include="Views/Tracker/Index.cshtml">
-      <publishTime>01/30/2014 10:52:42</publishTime>
+      <publishTime>02/07/2014 20:13:20</publishTime>
     </File>
     <File Include="Views/Tracker/IterationAdditionChange.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/23/2014 13:16:18</publishTime>
     </File>
     <File Include="Views/Tracker/IterationAdditionReach.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/23/2014 13:22:06</publishTime>
     </File>
     <File Include="Views/Tracker/IterationDetail.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/27/2014 22:40:12</publishTime>
     </File>
     <File Include="Views/Tracker/IterationFailedToLoad.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/26/2014 20:55:26</publishTime>
     </File>
     <File Include="Views/Tracker/IterationSummary.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/23/2014 17:54:15</publishTime>
     </File>
     <File Include="Views/Tracker/NoGoalsFound.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/26/2014 21:14:19</publishTime>
     </File>
     <File Include="Views/web.config">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:37:04</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>01/30/2014 08:51:26</publishTime>
+      <publishTime>01/16/2014 22:38:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/30/2014 12:43:09</publishTime>
+      <publishTime>02/09/2014 22:52:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

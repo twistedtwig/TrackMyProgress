@@ -5,7 +5,7 @@ namespace Behaviours.Enums
     {
         Day = 1,
         Week = 7,
-        Month = 30,
+        Month = 31,
         Year = 365,
     }
 }
