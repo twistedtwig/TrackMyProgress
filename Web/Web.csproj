@@ -121,12 +121,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootswatch.css" />
-    <Content Include="Content\colorpicker.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\jchartfx.css" />
     <Content Include="Content\Jquery-ui-1.10.3.css" />
     <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\pick-a-color-1.1.7.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -185,7 +185,6 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\charting.js" />
-    <Content Include="Scripts\colorpicker.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\jChartFX\jchartfx.advanced.js" />
     <Content Include="Scripts\jChartFX\jchartfx.coreVector.js" />
@@ -199,6 +198,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\pick-a-color.js" />
+    <Content Include="Scripts\tinycolor-0.9.15.min.js" />
     <Content Include="Scripts\tracker.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

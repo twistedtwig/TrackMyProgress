@@ -68,3 +68,8 @@ footer {
     border-top: 1px #222222 solid;
     padding: 25px 10px 10px 10px;
 }
+
+.colourpicker {
+    width: 80%;
+    margin-right: 10px;
+}

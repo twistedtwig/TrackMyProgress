@@ -1,20 +1,22 @@
 ﻿@using Web.Models
 
-@Html.AddResource(@<script src="~/Scripts/colorpicker.js"></script>, "bottomScripts") 
+@Html.AddResource(@<script src="~/Scripts/tinycolor-0.9.15.min.js"></script>, "bottomScripts") 
+@Html.AddResource(@<script src="~/Scripts/pick-a-color.js"></script>, "bottomScripts") 
 @Html.AddResource(@<script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#HexColour').ColorPicker({
-                onSubmit: function (hsb, hex, rgb, el) {
-                    $(el).val(hex);
-                    $(el).ColorPickerHide();
-                },
-                onBeforeShow: function () {
-                    $(this).ColorPickerSetColor(this.value);
-                }
-            })
-            .bind('keyup', function () {
-                $(this).ColorPickerSetColor(this.value);
+            $(document).ready(function () {
+
+                $(".colourpicker").pickAColor({
+                    showSpectrum: true,
+                    showSavedColors: true,
+                    saveColorsPerElement: true,
+                    fadeMenuToggle: true,
+                    showAdvanced: true,
+                    showBasicColors: true,
+                    showHexInput: true,
+                    allowBlank: true
+                });
+
             });
-        });        
+            
     </script>, "bottomScripts") 

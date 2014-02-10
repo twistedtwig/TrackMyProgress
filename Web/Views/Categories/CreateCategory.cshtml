@@ -34,7 +34,7 @@
                 <fieldset>
 
                     @Html.BootStrapEditorAndLabelFor(model => model.Name)
-                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour) 
+                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off", @class="colourpicker" }) 
 
                     <div class="form-group">
                         <div class="col-lg-offset-2">

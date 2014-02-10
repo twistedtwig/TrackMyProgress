@@ -97,7 +97,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/24/2014 22:01:09</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>02/09/2014 22:54:13</publishTime>
+      <publishTime>02/10/2014 20:57:30</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>01/31/2014 07:27:43</publishTime>
@@ -123,8 +123,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/magnific-popup.css">
       <publishTime>02/09/2014 21:11:56</publishTime>
     </File>
+    <File Include="Content/pick-a-color-1.1.7.min.css">
+      <publishTime>10/19/2013 17:50:14</publishTime>
+    </File>
     <File Include="Content/Site.css">
-      <publishTime>02/09/2014 15:01:42</publishTime>
+      <publishTime>02/10/2014 20:44:40</publishTime>
     </File>
     <File Include="fonts/glyphicons-halflings-regular.eot">
       <publishTime>12/05/2013 08:40:18</publishTime>
@@ -237,6 +240,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="images/tracker-sm.png">
       <publishTime>02/09/2014 21:18:12</publishTime>
     </File>
+    <File Include="images/Tracking-lg.png">
+      <publishTime>02/09/2014 22:14:10</publishTime>
+    </File>
     <File Include="images/tracking-sm.png">
       <publishTime>02/09/2014 22:14:32</publishTime>
     </File>
@@ -342,11 +348,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/modernizr-2.6.2.js">
       <publishTime>01/16/2014 22:38:05</publishTime>
     </File>
+    <File Include="Scripts/pick-a-color.js">
+      <publishTime>10/19/2013 17:50:14</publishTime>
+    </File>
+    <File Include="Scripts/tinycolor-0.9.15.min.js">
+      <publishTime>10/19/2013 17:50:14</publishTime>
+    </File>
     <File Include="Scripts/tracker.js">
       <publishTime>01/26/2014 21:22:41</publishTime>
     </File>
     <File Include="Views/Categories/CreateCategory.cshtml">
-      <publishTime>01/25/2014 22:35:56</publishTime>
+      <publishTime>02/10/2014 20:48:27</publishTime>
     </File>
     <File Include="Views/Categories/CreateCategoryResult.cshtml">
       <publishTime>01/20/2014 14:37:17</publishTime>
@@ -355,13 +367,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/20/2014 17:37:18</publishTime>
     </File>
     <File Include="Views/Categories/Edit.cshtml">
-      <publishTime>01/25/2014 22:36:26</publishTime>
+      <publishTime>02/10/2014 20:48:42</publishTime>
     </File>
     <File Include="Views/Categories/Index.cshtml">
       <publishTime>01/20/2014 14:08:37</publishTime>
     </File>
     <File Include="Views/GoalManagement/CreateGoal.cshtml">
-      <publishTime>02/09/2014 22:49:59</publishTime>
+      <publishTime>02/10/2014 20:47:43</publishTime>
     </File>
     <File Include="Views/GoalManagement/CreateGoalResult.cshtml">
       <publishTime>01/20/2014 14:32:52</publishTime>
@@ -370,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/20/2014 21:15:54</publishTime>
     </File>
     <File Include="Views/GoalManagement/Edit.cshtml">
-      <publishTime>02/09/2014 22:50:36</publishTime>
+      <publishTime>02/10/2014 20:48:05</publishTime>
     </File>
     <File Include="Views/GoalManagement/EditFailed.cshtml">
       <publishTime>01/20/2014 16:24:51</publishTime>
@@ -385,7 +397,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/09/2014 22:18:07</publishTime>
     </File>
     <File Include="Views/Progress/Index.cshtml">
-      <publishTime>02/09/2014 15:05:02</publishTime>
+      <publishTime>02/10/2014 20:09:22</publishTime>
     </File>
     <File Include="Views/Progress/_GoalSummary.cshtml">
       <publishTime>02/03/2014 20:24:35</publishTime>
@@ -403,10 +415,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/26/2014 21:10:43</publishTime>
     </File>
     <File Include="Views/Shared/_HexColourPicker.cshtml">
-      <publishTime>01/25/2014 22:24:27</publishTime>
+      <publishTime>02/10/2014 20:46:49</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/09/2014 21:13:08</publishTime>
+      <publishTime>02/10/2014 20:54:38</publishTime>
     </File>
     <File Include="Views/Tracker/GoalSelector.cshtml">
       <publishTime>01/30/2014 08:51:26</publishTime>

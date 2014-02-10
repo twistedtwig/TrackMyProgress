@@ -23,6 +23,7 @@
             $('#StartDate').datepicker({
                 format: 'dd/mm/yyyy',
             });
+            
         });        
     </script>, "bottomScripts")
 
@@ -56,7 +57,7 @@
 
                     <hr />                    
 
-                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off" }, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off", @class="colourpicker" }, 3, 8)
                     @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete="off" }, 3, 8)
                     @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
                     @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)

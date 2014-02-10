@@ -47,16 +47,19 @@
                 traditional: true,
                 data: { iterationIds: GetSelectedIterationIds(), goalId: getGoalId() },
                 success: function(data) {
-                    DefineIterationSummaryChart("iterationSummaryChart", data);
+                    if (data != null) {
+                        DefineIterationSummaryChart("iterationSummaryChart", data);
+                        $("#iterationSummaryChart").show();
+                    }
                 }
             });
-            
+
             $.ajax({
                 url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationDetailsReport"})',
                 type: 'GET',
                 dataType: 'json',
                 data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
-                success: function (data) {
+                success: function(data) {
                     DefineIterationDetailChart("iterationDetailChart", data);
                 }
             });
@@ -81,6 +84,8 @@
         };
 
         $(document).ready(function() {
+
+            $("#iterationSummaryChart").hide();
 
             $.ajax({
                 url: '@Url.Action("GoalSelector", "Progress")',
