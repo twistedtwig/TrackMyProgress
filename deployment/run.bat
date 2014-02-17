@@ -1,0 +1,1 @@
+C:\GoogleDrive\Google Drive\Development\GoalManagement\deployment>IISDeployments.exe /CONFIGSECTION remotetestSetup /VERBOSE true

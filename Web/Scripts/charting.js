@@ -41,6 +41,10 @@ var PopulateIterationSummary = function(chart, data) {
 
 var DefineIterationSummaryChart = function(containerStr, data) {
     $("#" + containerStr).html("");
+    
+    if (data == null) {
+        return;
+    }
 
     var chart = new cfx.Chart();
     SetupChartIterationSummaryMarkers(chart, data);
@@ -72,8 +76,8 @@ var SetupChartIterationDetail = function (chart, data) {
 };
 
 var PopulateIterationDetail = function(chart, data) {
+    
     var items = [];
-
     $.each(data.Items, function () {
 
         var item = {};
@@ -92,6 +96,10 @@ var PopulateIterationDetail = function(chart, data) {
 
 var DefineIterationDetailChart = function (containerStr, data) {
     $("#" + containerStr).html("");
+    
+    if (data == null) {
+        return;
+    }
 
     var chart = new cfx.Chart();
     SetupChartIterationDetail(chart, data);
