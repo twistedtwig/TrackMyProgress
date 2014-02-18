@@ -1,7 +1,6 @@
 ﻿using GoalManagementLibrary;
 using System.Linq;
 using System.Web.Mvc;
-using Models;
 using Web.Models;
 
 namespace Web.Controllers
@@ -36,14 +35,6 @@ namespace Web.Controllers
         {
             var goalSummary = _goalManager.GetGoalSummary(goalId);
             return PartialView("_GoalSummary", goalSummary);
-        }
-
-        public ActionResult GoalIterations(int goalId)
-        {
-            var detail = _goalManager.GetIterationDetailInfo(goalId);
-            if(detail == null) return new EmptyResult();
-
-            return PartialView("_IterationsSummary", detail);
         }
 
         public ActionResult GetIterationRangeSelector()

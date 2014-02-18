@@ -11,6 +11,9 @@ namespace Models
 
         public int GoalId { get; set; }
         public IList<IterationSummary> Iterations { get; set; }
+
+        public int InitialStart { get; set; }
+        public int InitialEnd { get; set; }
     }
 
     public class IterationSummary

@@ -482,6 +482,17 @@ namespace GoalManagementLibrary
                     });
             }
 
+            int index = goal.Intervals.Count - 1;
+            var intervalLast = goal.Intervals[index];
+            while (intervalLast.EndDate > DateTime.Now && index > 0)
+            {
+                index--;
+                intervalLast = goal.Intervals[index];
+            }
+
+            detail.InitialEnd = index;
+            detail.InitialStart = index >= 6 ? index - 6 : 0;
+
             return detail;
         }
 
@@ -575,7 +586,7 @@ namespace GoalManagementLibrary
                 previousValue = iteration.Achieved;
             }
 
-            var avgVariance = variance.Sum() / variance.Count;
+            var avgVariance = variance.Any() ? variance.Sum() / variance.Count : 0;
 
             //find last iteration total
             double lastTotal = iterationList.Aggregate<GoalIterationEntity, double>(0, (current, it) => it.Achieved > 0 ? it.Achieved : current);

@@ -25,8 +25,8 @@
         };
 
         var GetSelectedIterationIds = function() {
-            var startId = $('#startIterationId').text();
-            var endId = $('#endIterationId').text();
+            var startId = parseInt($('#startIterationId').text());
+            var endId = parseInt($('#endIterationId').text());
 
             var ids = [];
             for (var i = startId; i <= endId; i++) {
@@ -40,28 +40,39 @@
             setStartAndEndDateRange(startId, endId);
             GetIterationsSummary();
 
-            $.ajax({
+            var iterationReport = $.ajax({
                 url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationReportModel"})',
+                data: { iterationIds: GetSelectedIterationIds(), goalId: getGoalId() },
                 type: 'GET',
                 dataType: 'json',
                 traditional: true,
-                data: { iterationIds: GetSelectedIterationIds(), goalId: getGoalId() },
-                success: function(data) {
-                    if (data != null) {
-                        DefineIterationSummaryChart("iterationSummaryChart", data);
-                        $("#iterationSummaryChart").show();
-                    }
-                }
             });
 
-            $.ajax({
+            iterationReport.done(function(data) {
+                if (data != null) {
+                    $("#iterationSummaryChart").show();
+                    DefineIterationSummaryChart("iterationSummaryChart", data);                    
+                }
+            });
+            iterationReport.fail(function() {
+                alert("problem loading report model");
+            });
+            
+            var iterationDetails = $.ajax({
                 url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationDetailsReport"})',
+                data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
                 type: 'GET',
                 dataType: 'json',
-                data: { goalId: getGoalId(), iterationIds: GetSelectedIterationIds() },
-                success: function(data) {
+                traditional: true,
+            });
+
+            iterationDetails.done(function(data) {
+                if (data != null) {
                     DefineIterationDetailChart("iterationDetailChart", data);
                 }
+            });
+            iterationDetails.fail(function() {
+                alert("problem loading report Details");
             });
         };
 
@@ -98,21 +109,30 @@
 
                 $('#selectedGoalId').html($("#goalSelectorDropDown option:selected").attr("value"));
 
-                $.ajax({
-                    url: '@Url.Action("GetIterationRangeSelector", "Progress")',
-                    success: function(data) {
+                var rangeSelector = $.ajax({
+                    url: '@Url.Action("GetIterationRangeSelector", "Progress")'
+                });
+                
+
+                rangeSelector.done(function (data) {
+                    if (data != null) {
                         $('#goaliterations').html(data);
 
-                        $.ajax({
+                        var iterationDetail = $.ajax({
                             url: '@Url.HttpRouteUrl("DefaultApi", new {controller = "GoalData", Action = "GetIterationDetailInfo"})',
+                            data: { goalId: getGoalId() },
                             type: 'GET',
                             dataType: 'json',
-                            data: { goalId: getGoalId() },
-                            success: function(data) {
+                            traditional: true,
+                        });
 
+                        iterationDetail.done(function (data) {
+                            if (data != null) {
                                 var numberIterations = data.Iterations.length - 1;
 
-                                $.each(data.Iterations, function(key, item) {
+                                iterations = [];
+
+                                $.each(data.Iterations, function (key, item) {
                                     iterations.push({
                                         id: item.IterationId,
                                         start: item.StartDate,
@@ -124,16 +144,22 @@
                                     range: true,
                                     min: 0,
                                     max: numberIterations,
-                                    values: [0, numberIterations],
-                                    slide: function(event, ui) {
+                                    values: [data.InitialStart, data.InitialEnd],
+                                    slide: function (event, ui) {
                                         ProcessIterationDetails(ui.values[0], ui.values[1]);
                                     }
                                 });
 
-                                ProcessIterationDetails(0, numberIterations);
+                                ProcessIterationDetails(data.InitialStart, data.InitialEnd);
                             }
                         });
+                        iterationDetail.fail(function () {
+                            alert("problem loading iteration Details");
+                        });
                     }
+                });
+                rangeSelector.fail(function () {
+                    alert("problem loading range selection");
                 });
 
                 $.ajax({
