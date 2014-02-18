@@ -1,1 +1,1 @@
-IISDeployments.exe /CONFIGSECTION deploy /VERBOSE true
+IISDeployments.exe /CONFIGSECTION deploy-local /VERBOSE true
