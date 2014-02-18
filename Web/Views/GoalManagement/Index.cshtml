@@ -23,12 +23,12 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Category</th>
-                <th>Goal Type</th>
-                <th>Behaviour Type</th>
-                <th>Change Value</th>
-                <th>Unit Description</th>
-                <th>Duration</th>
+                <th class="hidden-xs">Category</th>
+                <th class="hidden-xs">Goal Type</th>
+                <th class="hidden-xs">Behaviour Type</th>
+                <th class="hidden-xs">Change Value</th>
+                <th class="hidden-xs">Unit Description</th>
+                <th class="hidden-xs">Duration</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -37,12 +37,12 @@
             <tr>
                 @Html.HiddenFor(g => goal.Id)
                 <td>@goal.Name</td>
-                <td>@goal.Category.Name</td>
-                <td>@goal.GoalType.GetDescription()</td>
-                <td>@goal.BehaviourType.GetDescription()</td>
-                <td>@goal.ChangeValue</td>
-                <td>@goal.UnitDescription</td>
-                <td>@goal.IntervalDuration.GetDescription()</td>
+                <td class="hidden-xs">@goal.Category.Name</td>
+                <td class="hidden-xs">@goal.GoalType.GetDescription()</td>
+                <td class="hidden-xs">@goal.BehaviourType.GetDescription()</td>
+                <td class="hidden-xs">@goal.ChangeValue</td>
+                <td class="hidden-xs">@goal.UnitDescription</td>
+                <td class="hidden-xs">@goal.IntervalDuration.GetDescription()</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "GoalManagement", new { goalId = @goal.Id }, new { @class = "btn btn-primary btn-xs" })
                     @Html.ActionLink("Delete", "Delete", "GoalManagement", new { goalId = @goal.Id }, new { @class = "btn btn-danger btn-xs" })

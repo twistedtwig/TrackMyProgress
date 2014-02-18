@@ -22,7 +22,6 @@
             <table class="table table-striped table-bordered table-hover table-responsive">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Actions</th>
                     </tr>
@@ -31,7 +30,7 @@
                     @foreach (var cat in Model)
                     {
                         <tr>
-                            <td>@cat.Id</td>
+                            @Html.HiddenFor(c => cat.Id)
                             <td>@cat.Name</td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", "Categories", new { categoryId = @cat.Id }, new { @class = "btn btn-primary btn-xs" })

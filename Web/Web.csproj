@@ -255,7 +255,6 @@
     <Content Include="Views\Tracker\NoGoalsFound.cshtml" />
     <Content Include="Views\Progress\Index.cshtml" />
     <Content Include="Views\Progress\_GoalSummary.cshtml" />
-    <Content Include="Views\Progress\_IterationsSummary.cshtml" />
     <Content Include="Views\Progress\_IterationRangeSelector.cshtml" />
     <Content Include="Views\Progress\_MultiIterationSummary.cshtml" />
     <None Include="Web.Debug.config">
