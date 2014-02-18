@@ -4,8 +4,8 @@ namespace Behaviours.Enums
 {
     public enum GoalType
     {
-        [Description("Change the Value")]
-        ChangeSomething = 1,
+        [Description("Reduce the Value")]
+        ReduceSomething = 1,
 
         [Description("Reach the Value")]
         ReachSomething = 2,

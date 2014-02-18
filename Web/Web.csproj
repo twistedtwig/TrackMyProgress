@@ -257,6 +257,7 @@
     <Content Include="Views\Progress\_GoalSummary.cshtml" />
     <Content Include="Views\Progress\_IterationRangeSelector.cshtml" />
     <Content Include="Views\Progress\_MultiIterationSummary.cshtml" />
+    <Content Include="Views\GoalManagement\CreateFromTarget.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -36,7 +36,7 @@ namespace Web.Controllers
             {
                 return RedirectToAction("Index");
             }
-
+            
             return View("CreateCategoryResult", result);
         }
 

@@ -51,6 +51,31 @@ namespace Web.Controllers
             return View("CreateGoalResult", result);
         }
 
+        public ActionResult CreateFromTarget()
+        {
+            var model = new CreateGoalFromTarget();
+            model.Categories = _categoryManager.Categories();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateFromTarget(CreateGoalFromTarget model)
+        {
+            var result = _goalManager.CreateGoalFromTarget(model);
+
+            if (result.Success)
+            {
+                return RedirectToAction("Index");
+            }
+
+            foreach (var message in result.Messages)
+            {
+                ModelState.AddModelError("", message);
+            }
+
+            return View(model);
+        }
+
         public ActionResult Edit(int goalId)
         {
             var goal = _goalManager.Goals().FirstOrDefault(x => x.Id.Equals(goalId));

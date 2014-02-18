@@ -1,9 +1,11 @@
 ﻿@using Behaviours.Enums
 @using Web.Models
-@model GoalManagementLibrary.Models.CreateGoalRequest
+@model GoalManagementLibrary.Models.CreateGoalFromTarget
+
+
 
 @{
-    ViewBag.Title = "Create a new Goal";
+    ViewBag.Title = "Create Goal by Target Date";
 
     var cats = new SelectList(Model.Categories, "Id", "Name");
 }
@@ -13,13 +15,17 @@
     <ul class="breadcrumb">
         <li>@Html.ActionLink("Home", "Index", "Home")</li>
         <li>@Html.ActionLink("Goal Management", "Index", "GoalManagement")</li>
-        <li class="active">Create</li>
+        <li class="active">Create from Target</li>
     </ul>
 }
 
 @Html.AddResource(@<script type="text/javascript">
 
         $(document).ready(function () {
+            $('#TargetDate').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+            
             $('#StartDate').datepicker({
                 format: 'dd/mm/yyyy',
             });
@@ -37,40 +43,40 @@
 
 <div class="row">
     <div class="col-lg-6">
+        @Html.ValidationSummary(true)
+
         <div class="well">
-            @using (Html.BeginForm("CreateGoal", "GoalManagement", FormMethod.Post, new { @class = "form-horizontal" }))
+            @using (Html.BeginForm("CreateFromTarget", "GoalManagement", FormMethod.Post, new { @class = "form-horizontal" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-    
+                
                 for (int i = 0; i < Model.Categories.Count; i++)
                 {
                     @Html.HiddenFor(x => x.Categories[i].Id)     
                     @Html.HiddenFor(x => x.Categories[i].Name)     
                 }
         
-                <fieldset>
+                <fieldset>                                                       
                     
+                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete="off" }, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.TargetDate, new { autocomplete="off" }, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.TargetValue, new { autocomplete="off" }, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.CurrentValue, new { autocomplete="off" }, 3, 8)
+                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
+                    
+                    <hr />                    
+
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)                    
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 3, 8)
+                    
+                    <hr /> 
+
                     @Html.BootStrapEditorAndLabelFor(model => model.Name, 3, 8)
                     @Html.BootStrapEditorAndLabelFor(model => model.ShortName, 3, 8)
                     @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 3, 8)
-
-                    <hr />                    
-
                     @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off", @class="colourpicker" }, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete="off" }, 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
 
-                    <hr />                    
-                    
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 3, 8)
-
-                    @Html.BootStrapEditorAndLabelFor(model => model.ChangeValue, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.FirstIterationTarget, 3, 8)
-
-                    
 
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-3">

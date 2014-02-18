@@ -227,7 +227,7 @@ namespace Web.Models
                 throw new ArgumentException("T must be an enumerated type");
             }
 
-            return (Enum.GetValues(eEnum).Cast<int>().Select(e => new SelectListItem { Text = Enum.GetName(eEnum, e), Value = e.ToString() })).ToList();
+            return (Enum.GetValues(eEnum).Cast<int>().Select(e => new SelectListItem { Text = ((Enum) Enum.Parse(eEnum, e.ToString())).GetDescription(), Value = e.ToString() })).ToList();
         }
 
 
@@ -237,6 +237,17 @@ namespace Web.Models
         {
             var tagBuilder = new TagBuilder("div");
             tagBuilder.MergeAttribute("class", "form-group");
+
+            //TODO test this, might not need it.
+            var ex = (MemberExpression)expression.Body;
+            string name = ex.Member.Name;
+
+            if (html.ViewContext.ViewData.ModelState.ContainsKey(name))
+            {
+                tagBuilder.MergeAttribute("class", "has-error");                
+            }
+            
+
 
             tagBuilder.InnerHtml += BootStrapLabelFor(html, expression, labelText, null, labelCols).ToHtmlString();
 

@@ -57,9 +57,14 @@
   <ItemGroup>
     <Compile Include="CategoryManager.cs" />
     <Compile Include="DateHelper.cs" />
+    <Compile Include="GoalCreation.cs" />
     <Compile Include="GoalManager.cs" />
+    <Compile Include="GoalUtilities.cs" />
+    <Compile Include="GoalValidation.cs" />
     <Compile Include="Models\CreateCategoryRequest.cs" />
     <Compile Include="Models\CreateCategoryResult.cs" />
+    <Compile Include="Models\CreateGoalFromTarget.cs" />
+    <Compile Include="Models\CreateGoalFromTargetResult.cs" />
     <Compile Include="Models\CreateGoalRequest.cs" />
     <Compile Include="Models\CreateGoalResult.cs" />
     <Compile Include="Models\GetTrackingSummaryRequest.cs" />

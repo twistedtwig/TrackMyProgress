@@ -3,19 +3,21 @@ using Models;
 
 namespace GoalManagementLibrary.Models
 {
-    public class CreateGoalResult
+    public abstract class CreationResult
     {
-        public CreateGoalResult()
+        protected CreationResult()
         {
             Success = true;
             Messages = new List<string>();
         }
 
-        public Goal Goal { get; set; }
-
         public List<string> Messages { get; set; }
         public bool Success { get; set; }
+    }
 
+    public class CreateGoalResult : CreationResult
+    {        
+        public Goal Goal { get; set; }
         public CreateGoalRequest Request { get; set; }
     }
 }

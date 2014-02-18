@@ -9,7 +9,7 @@ namespace Behaviours.GoalBehaviours
         {
             switch (goalType)
             {
-                case GoalType.ChangeSomething:
+                case GoalType.ReduceSomething:
                     return new ChangeSomethingGoalTypeStrategy();
                 case GoalType.ReachSomething:
                     return new ReachSomethingGoalTypeStrategy();

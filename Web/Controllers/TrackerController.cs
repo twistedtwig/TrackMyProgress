@@ -40,8 +40,8 @@ namespace Web.Controllers
             selectedDate = selectedDate.AddSeconds(1);
             var goal = _goalManager.Get(goalId);
 
-            goal = _goalManager.EnsureGoalHasAllIterations(goal, selectedDate);
-            var iteration = _goalManager.GetCurrentIteration(goal, selectedDate);
+            goal = GoalUtilities.EnsureGoalHasAllIterations(goal, selectedDate);
+            var iteration = GoalUtilities.GetCurrentIteration(goal, selectedDate);
             if (iteration == null)
             {
                 return PartialView("IterationFailedToLoad", new GoalIterationFailedToLoadSummary(goal.Id, goal.Name));
@@ -59,17 +59,17 @@ namespace Web.Controllers
             if(goal.StartDate > currentDate) return new EmptyResult();
 
 
-            goal = _goalManager.EnsureGoalHasAllIterations(goal, currentDate);
+            goal = GoalUtilities.EnsureGoalHasAllIterations(goal, currentDate);
             var gim = new GoalIterationModel
                 {
                     GoalId = goal.Id, 
-                    Units = goal.UnitDescription, 
-                    IterationId = _goalManager.GetCurrentIteration(goal, currentDate).Id
+                    Units = goal.UnitDescription,
+                    IterationId = GoalUtilities.GetCurrentIteration(goal, currentDate).Id
                 };
 
             switch (goal.GoalType)
             {
-                case GoalType.ChangeSomething:
+                case GoalType.ReduceSomething:
                     return PartialView("IterationAdditionChange", gim);
 
                 case GoalType.ReachSomething:

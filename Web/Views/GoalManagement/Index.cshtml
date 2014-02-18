@@ -1,4 +1,5 @@
-﻿@using Models
+﻿@using Behaviours.Enums
+@using Models
 @using Web.Models
 @model List<Goal>
 
@@ -40,7 +41,7 @@
                 <td class="hidden-xs">@goal.Category.Name</td>
                 <td class="hidden-xs">@goal.GoalType.GetDescription()</td>
                 <td class="hidden-xs">@goal.BehaviourType.GetDescription()</td>
-                <td class="hidden-xs">@goal.ChangeValue</td>
+                <td class="hidden-xs">@Math.Round(goal.ChangeValue, 2)@(goal.BehaviourType == GoalBehaviourType.IncrementPercentage || goal.BehaviourType == GoalBehaviourType.ReducePercentage ? "%" : "")</td>
                 <td class="hidden-xs">@goal.UnitDescription</td>
                 <td class="hidden-xs">@goal.IntervalDuration.GetDescription()</td>
                 <td>
@@ -54,4 +55,5 @@
 
 <div>
     @Html.ActionLink("Create Goal", "CreateGoal", "GoalManagement", null, new { @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Create From Target", "CreateFromTarget", "GoalManagement", null, new { @class = "btn btn-primary btn-lg" })
 </div>
