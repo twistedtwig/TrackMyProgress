@@ -23,6 +23,8 @@ namespace Models
         [Required, StringLength(MaxShortNameLength)]
         [DisplayName("Short Name")]
         public string ShortName { get; set; }
+
+        [DisplayName("Display Colour")]
         public string HexColour { get; set; }
         public Category Category { get; set; }
 

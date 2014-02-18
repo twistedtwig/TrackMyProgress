@@ -47,6 +47,8 @@ namespace GoalManagementLibrary.Models
 
         [DisplayName("Short Name")]
         public string ShortName { get; set; }
+
+        [DisplayName("Display Colour")]
         public string HexColour { get; set; }
         
         [DisplayName("Change Value")]
