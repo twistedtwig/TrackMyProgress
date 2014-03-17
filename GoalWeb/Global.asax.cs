@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Castle.MicroKernel.Registration;
+using Castle.Windsor;
+using GoalManagement;
+using GoalRepository;
+using GoalWeb.Controllers;
+using HoHUtilities.Mvc.Windsor;
+using Mvc.Windsor;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using GoalManagement;
-using GoalRepository;
-using HoHUtilities.Mvc.Windsor;
-using Mvc.Windsor;
 
 namespace GoalWeb
 {
@@ -36,6 +34,36 @@ namespace GoalWeb
 
             GlobalConfiguration.Configuration.DependencyResolver = new WindsorDependencyResolver(container);
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
+        }
+
+        protected void Application_Error()
+        {
+            var exception = Server.GetLastError();
+            var httpException = exception as HttpException;
+            Response.Clear();
+            Server.ClearError();
+            var routeData = new RouteData();
+            routeData.Values["controller"] = "Errors";
+            routeData.Values["action"] = "General";
+            routeData.Values["exception"] = exception;
+            Response.StatusCode = 500;
+            if (httpException != null)
+            {
+                Response.StatusCode = httpException.GetHttpCode();
+                switch (Response.StatusCode)
+                {
+                    case 403:
+                        routeData.Values["action"] = "Forbidden";
+                        break;
+                    case 404:
+                        routeData.Values["action"] = "NotFound";
+                        break;
+                }
+            }
+
+            IController errorsController = new ErrorsController();
+            var rc = new RequestContext(new HttpContextWrapper(Context), routeData);
+            errorsController.Execute(rc);
         }
     }
 }
