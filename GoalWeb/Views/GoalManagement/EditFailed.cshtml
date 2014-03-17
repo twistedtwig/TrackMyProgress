@@ -1,0 +1,28 @@
+﻿@model Goals.Models.RequestResponse.SaveResult<Goal>
+
+@{
+    ViewBag.Title = "The Goal was not Saved.";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Goal Management", "Index", "GoalManagement")</li>
+        <li class="active">Edit</li>
+    </ul>
+}
+
+
+
+@Html.AddResource(@<ul class="text-danger">
+                        @foreach (var message in Model.Messages)
+                        {
+                            <li>@message</li>
+                        }
+                    </ul>
+        , "errors")
+
+
+@Html.Partial("Edit", Model.Model)
+

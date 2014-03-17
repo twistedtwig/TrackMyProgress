@@ -1,0 +1,231 @@
+﻿@{
+    ViewBag.Title = "Track Your Goals";
+}
+
+@section scripts
+{
+    <script type='text/javascript' src='~/Scripts/fullcalendar.js'></script>
+   
+    <script type="text/javascript">
+
+        var clearAllFormsAndRefresh = function(refreshData) {
+            $('#goalselector').html("");
+            $('#trackerAdd').html("");
+            $('#iterationInfo').html("");
+
+            if(refreshData) {
+                $('#calendar').fullCalendar('refetchEvents');                            
+            }
+            $('#calendar').fullCalendar('unselect');  
+        };
+
+        var clearSelectedEvents = function() {
+            $("#calendar .fc-event").each(function () {
+                $(this).removeClass("fc-selected-event-custom");
+            });
+        };
+
+        var getSelectedDate = function() {
+            return new Date($("#hiddenSelectedYear").text(), $("#hiddenSelectedMonth").text(), $("#hiddenSelectedDay").text());
+        };
+
+        $(document).ready(function() {
+
+            var hexDigits = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
+
+            //Function to convert hex format to a rgb color
+            function rgb2hex(rgb) {
+                rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+            }
+            
+            function hex(x) {
+                return isNaN(x) ? "00" : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+            }
+
+            function invertColor(hexTripletColor) {
+                var color = hexTripletColor;
+                color = color.substring(1); // remove #
+                color = parseInt(color, 16); // convert to integer
+                color = 0xFFFFFF ^ color; // invert three bytes
+                color = color.toString(16); // convert to hex
+                color = ("000000" + color).slice(-6); // pad with leading zeros
+                color = "#" + color; // prepend #
+                return color;
+            }
+            
+            $('#calendar').fullCalendar({
+                events: function(start, end, callback) {
+                    $.ajax({
+                        url: '@Url.HttpRouteUrl("DefaultApi", new { controller = "GoalData", Action = "GetTrackingSummmary" })',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: { startDate: convertDate(start), endDate: convertDate(end) },
+                        success: function(data) {
+
+                            var events = [];
+
+                            $.each(data, function(key, item) {
+                                events.push({
+                                    title: item.Name,
+                                    id: item.Id,
+                                    start: item.Date,
+                                    color: item.HexColour,
+                                });
+                            });
+                            
+                            callback(events);
+                            
+
+                            $(".fc-event").each(function () {
+                                var rgb = $(this).css('backgroundColor');
+                                var hex = rgb2hex(rgb);
+                                var invertedHex = invertColor(hex);
+                                $(this).css('color', invertedHex);
+                            });
+                        }
+                    });
+                },
+
+                eventClick: function(calEvent, jsEvent, view) {
+
+                    clearAllFormsAndRefresh(false);
+
+                    $.ajax({
+                        url: '@Url.Action("IterationEntry", "Tracker")',
+                        data: { id: calEvent.id },
+                        success: function(data) {
+                            $('#goalselector').html(data);
+                        },
+                    });
+
+                    clearSelectedEvents();
+                    $(this).addClass("fc-selected-event-custom");
+
+                },
+
+                dayClick: function (date, allDay, jsEvent, view) {
+                    clearSelectedEvents();
+                    $('#calendar').fullCalendar('select', date);
+
+                    $('#goalselector').html("");
+
+                    $.ajax({
+                        url: '@Url.Action("GoalSelector", "Tracker")',
+                        data: { currentDate: convertDate(date) },
+                        success: function(data) {
+                            $('#goalselector').html(data);
+                        },
+                    });
+
+                    $('#trackerAdd').html("");
+                    $('#iterationInfo').html("");
+
+                    $("#hiddenSelectedDay").html(date.getDate());
+                    $("#hiddenSelectedMonth").html(date.getMonth());
+                    $("#hiddenSelectedYear").html(date.getFullYear());
+                }
+
+                // put your options and callbacks here
+            });
+
+            $('#goalselector').on("change", "#goalSelectorDropDown", function() {
+
+                $.ajax({
+                    url: '@Url.Action("Add", "Tracker")',
+                    data: { goalId: $("#goalSelectorDropDown option:selected").attr("value"), currentDate: getSelectedDate().toJSON() },
+                    success: function(data) {
+                        $('#trackerAdd').html(data);
+                    },
+                });
+
+                $.ajax({
+                    url: '@Url.Action("GetCurrentIteration", "Tracker")',
+                    data: { goalId: $("#goalSelectorDropDown option:selected").attr("value"), selectedDate: getSelectedDate().toJSON() },
+                    success: function(data) {
+                        $('#iterationInfo').html(data);
+                    },
+                });
+            });
+
+            $("#trackerAdd").on("click", "#addNewValue", function() {
+
+                var $form = $(this).parents('form');
+
+                $.ajax({
+                    type: "POST",
+                    url: $form.attr('action'),
+                    data: $form.serialize(),
+                    error: function(xhr, status, error) {
+                        alert("error posting to server");
+                    },
+                    success: function(response) {
+                        if (response) {
+                            clearAllFormsAndRefresh(true);
+                        } else {
+                            alert("failed to add entry");
+                        }
+                    }
+                });
+                
+                //stop normal postback.
+                return false;
+            });
+
+                $("#goalselector").on("click", "#deleteValue", function() {
+
+                    var $form = $(this).parents('form');
+
+                    $.ajax({
+                        type: "POST",
+                        url: $form.attr('action'),
+                        data: $form.serialize(),
+                        error: function(xhr, status, error) {
+                            alert("error posting to server");
+                        },
+                        success: function(response) {
+                            if (response) {
+                                clearAllFormsAndRefresh(true);
+                            } else {
+                                alert("failed to add entry");
+                            }
+                        }
+                    });
+
+                    //stop normal postback.
+                    return false;
+                });            
+        });
+    </script>    
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Tracker</li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<input type="hidden" id="hiddenSelectedDay" />
+<input type="hidden" id="hiddenSelectedMonth" />
+<input type="hidden" id="hiddenSelectedYear" />
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="calendar"></div>
+        </div>
+   
+        <div class="col-lg-5 spacer">
+            <div id="goalselector"></div>
+            <div id="iterationInfo"></div>
+            <div id="trackerAdd"></div>
+        </div>
+    </div>
+</div>

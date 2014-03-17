@@ -1,0 +1,21 @@
+﻿@Html.AddResource(@<script src="~/Scripts/tinycolor-0.9.15.min.js"></script>, "bottomScripts") 
+@Html.AddResource(@<script src="~/Scripts/pick-a-color.js"></script>, "bottomScripts") 
+@Html.AddResource(@<script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $(".colourpicker").pickAColor({
+                    showSpectrum: true,
+                    showSavedColors: true,
+                    saveColorsPerElement: true,
+                    fadeMenuToggle: true,
+                    showAdvanced: true,
+                    showBasicColors: true,
+                    showHexInput: true,
+                    allowBlank: true
+                });
+
+            });
+            
+    </script>, "bottomScripts") 
+

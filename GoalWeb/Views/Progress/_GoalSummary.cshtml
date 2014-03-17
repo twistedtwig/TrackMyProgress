@@ -1,0 +1,33 @@
+﻿@model GoalSummary
+
+<div class="row">
+    <div class="well">
+        <form class="form-horizontal">
+            <fieldset>
+
+                @Html.HiddenFor(m => m.GoalId)
+
+                <h1>@Model.Title</h1>
+                <hr />
+
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">@Model.NumberOfIterations</span>
+                        number of iterations
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.AvgEntriesPerIteration</span>
+                        Average number of entries per iteration
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.AvgPercentageToTarget%</span>
+                        Average percentage to target
+                    </li>
+                </ul>
+
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+

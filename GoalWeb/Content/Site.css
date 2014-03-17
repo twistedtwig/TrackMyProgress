@@ -1,0 +1,121 @@
+﻿body {
+    text-align: justify;
+    padding-top: 0;
+}
+
+
+/* Set padding to keep content from hitting the edges */
+#body-content {    
+    padding: 30px 15px 0 15px;
+    margin-top: 26px;
+}
+
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid { 
+    display: none;
+}
+
+.navbar-brand {
+    padding:14px 15px 0 15px;
+    font-weight: bold;
+}
+
+.container img {
+    margin: 3px 15px;
+}
+
+
+.fc-selected-event-custom {
+    border-width: 2px;
+    border-color: black !important;
+}
+
+.chartArea {
+    height: 650px;
+}
+
+ 
+.spacer {
+    padding: 10px;
+}
+
+.marginColumn {
+    margin-right: 10px;
+}
+
+
+footer {
+    
+    padding: 25px 10px 10px 10px;
+}
+
+.colourpicker {
+    width: 80%;
+    margin-right: 10px;
+}
+
+
+.row {
+    margin-left: 0;
+}
+
+
+#socialLoginList #Facebook {
+
+    padding-left: 30px;    
+
+    background-color: rgb(58, 85, 158);
+    background: url('../images/facebook-icon.png') left center no-repeat;    
+    background: url('../images/facebook-icon.png') left center no-repeat, rgb(76, 105, 184);
+    background-position: 5px 6px;
+
+    border-color: #4c69ba;
+    -webkit-border-radius: 2px;
+    color: #fff;    
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 0 -1px 0 #354c8c;
+}
+
+#socialLoginList #Google {
+    background-image: url('../images/Red-signin-Google-base-32dp.png');
+    width: 125px;
+    height: 42px;
+    outline: none;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+
+    text-indent:-9999px;
+    font-size:0;
+    line-height: 0;
+}
+
+#socialLoginList #Google:hover {
+    outline: none;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border-color: transparent !important;    
+}

@@ -1,5 +1,5 @@
-﻿using Behaviours.Enums;
-using System;
+﻿using System;
+using Goals.Shared.Enums;
 
 namespace Behaviours.GoalBehaviours
 {
@@ -9,7 +9,7 @@ namespace Behaviours.GoalBehaviours
         {
             switch (goalType)
             {
-                case GoalType.ReduceSomething:
+                case GoalType.ChangeSomething:
                     return new ChangeSomethingGoalTypeStrategy();
                 case GoalType.ReachSomething:
                     return new ReachSomethingGoalTypeStrategy();

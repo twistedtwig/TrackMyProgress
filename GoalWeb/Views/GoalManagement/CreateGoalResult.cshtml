@@ -1,0 +1,28 @@
+﻿@model Goals.Models.RequestResponse.CreateGoalResult
+
+@{
+    ViewBag.Title = "The Goal was not created.";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Goal Management", "Index", "GoalManagement")</li>
+        <li class="active">Create</li>
+    </ul>
+}
+
+
+
+@Html.AddResource(@<ul class="text-danger">
+                        @foreach (var message in Model.Messages)
+                        {
+                            <li>@message</li>
+                        }
+                    </ul>
+        , "errors")
+
+
+@Html.Partial("CreateGoal", Model.Request)
+

@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Goal Tracking";
+}
+
+<div class="page-header">
+    <h1>@ViewBag.Title</h1>
+</div>
+<section>
+    <a href="~/images/tracking-lg.png" class="image-link"><img src="~/images/tracking-sm.png" class="pull-right hidden-xs" /></a>
+    
+    <p>Goal Tracking allows a user to track the progress and usage of different targets or achievements.</p>
+    <p>The system allows a user to create categories and goals and track their progress.  Goal tracking happens over progressive iterations. An iteration can be of various 
+        lengths, a day, week, month or a year.  The user would create a goal and record the data as they work towards that goal.</p>
+    <p>An example Goal could be to track the number of miles ridden on the user's push bike each month.  The users aim could be to increase the amount by 10% per month (iteration). 
+        The user would enter the distance each time they ride the bike in the Tracker page. If the goal was started in January with an aim of doing 20 miles that month, Feburary's 
+        target would be 22 miles, March's target would be 24.2 miles, and so on.</p>
+    <p>The user could then see their results in the progress page.  Their they can analysis their goals, see how they are doing and see if they need to adjust their targets.  They 
+        can also see how well they could be doing in the future given their current and previous performance.</p>
+
+</section>
+
+<div class="page-header">
+    <h2>Creating Goals</h2>    
+</div>
+
+<section>
+    <a href="~/images/createGoal-lg.png" class="image-link"><img src="~/images/createGoal-sm.png" class="pull-right hidden-xs" /></a>
+    
+<p>The user can create goals to keep track of their progress across time.  A Goal is made up of a few parts, such as a name, category, and type.  It defines what and how the 
+user wants to manage / track a value.</p>
+
+<p>A Goal is defined by a number of parameters.</p>
+
+<ul>
+	<li>Name</li>
+	<li>Short Name</li>
+	<li>Category</li>
+	<li>Display colour</li>
+	<li>Start Date</li>
+	<li>Duration</li>
+	<li>Goal Type</li>
+	<li>Goal Behaviour</li>
+	<li>The amount the target should change by</li>
+	<li>The first target</li>
+	<li>Description of the unit being messaged</li>
+</ul>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">Duration</div>
+        <div class="panel-body">
+            The duration relates to how long a single iteration lasts.  I.e. if the duration was set to a "week" then there would be four iterations per month.  At the start of a new 
+iteration the goal's target can change, (depending on the given goal and behaviour type).
+        </div>
+    </div>    
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Goal Type</div>
+        <div class="panel-body">
+            <p>There are three types of Goals:</p>
+            <ul>
+                <li>Change Something</li>
+                <li>Reach Something</li>
+                <li>Track Something</li>
+            </ul>
+            <p><strong>Change Something</strong> - The aim is to change a given value.  Such as having a goal of loosing weight.  The goal would be to change the user's current weight.</p>
+            <p><strong>Reach Something</strong> - The aim is to reach a given value.  For example exercising three times a week.  The user would record each time they exercise, with the 
+
+            target being three times per iteration, (weekly iteration).</p>
+            <p><strong>Track something</strong> - The aim is to simply track a given value.  There would be no increasing it each month or a certain goal, just record when and how much it 
+            occurs.</p>
+        </div>
+    </div>    
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">Goal Behaviour</div>
+        <div class="panel-body">
+            <p>There are five types of behaviour within a Goal:</p>
+            <ul>
+	            <li>Increase a value</li>
+	            <li>Increase a vlaue by a given percent</li>
+	            <li>Decrease a value</li>
+	            <li>Increase a vlaue by a given percent</li>
+	            <li>None</li>
+            </ul>
+
+            <p>In essense they can be boiled down into three, increase something, decrease soemthing or do not change it.  The behaviour will change the target value each iteration, it 
+            will either change by a given value, such as add ten to each each itheration, or it will change by a certain percantage, such as add ten percent to it each iteration.</p>
+        </div>
+    </div>    
+    
+</section>
+
+<div class="page-header">
+    <h2>Updating and Tracking Progress</h2>    
+</div>
+
+<section>
+    <a href="~/images/tracker-lg.png" class="image-link"><img src="~/images/tracker-sm.png" class="pull-right hidden-xs" /></a>
+
+    <p>Updating the progress of a Goal is very quick and simple.  On the Tracking page simply select the date, select the goal then enter the value and click the button. 
+        The system will update the goals progress for you automatically.  When a goal is selected it lets the user know how they are dong so far for this iteration, 
+        for example the user might be have achieved 40% of their goal for that month.</p>
+    <p>If an entry has been saved in error simply select the offending entry in the calendar and delete it.  This will readjust the totals automatically.</p>
+    <p>Tracking progress over an iteration or a whole goal can been found on the Progress page.  Here the user can select a goal and see a number of summary details, such as:</p>
+    <ul>
+        <li>Current Iteration Progress</li>
+        <li>Number of iterations (that have data in)</li>
+        <li>Avg number of entries per iteration</li>      
+        <li>Avg percentage achieved towards a goal (across all iterations)</li>
+    </ul>
+ 
+    <p>There are also a number of graphing tools to be able to view the progress over all the iterations, as well as future trend line analysis.</p>
+</section>
+
+@Html.AddResource(
+    @<script type="text/javascript">
+         $("document").ready(function() {
+             $(document).ready(function () {
+                 $('.image-link').magnificPopup({ type: 'image' });
+             });
+         });
+     </script>, "bottomScripts")
+

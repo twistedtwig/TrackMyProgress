@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Goal Management</title>
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+    
+    <link href="~/Content/Jquery-ui-1.10.3.css" rel="stylesheet" media="screen" />
+    <link type="text/css" href="~/Content/jchartfx.css" rel="stylesheet" />    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" media="screen" />
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/Content/bootswatch.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.css" rel="stylesheet" type="text/css" /> 
+    <link href="~/Content/datepicker.css" rel="stylesheet" type="text/css" />       
+    <link href="~/Content/magnific-popup.css" rel="stylesheet" type="text/css" />   
+    <link href="~/Content/pick-a-color-1.1.7.min.css" rel="stylesheet" type="text/css" >   
+    <link href="~/Content/sticky-footer.css" rel="stylesheet" type="text/css" >   
+    
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />  
+    
+</head>
+    <body>
+    
+    <div class="navbar navbar-default navbar-fixed-top">        
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Goal Tracking", "Index", "Home", null, new { @class = "navbar-brand" })
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    @Html.LiNavActionLink("Tracker", "Index", "Tracker")
+                    @Html.LiNavActionLink("Progress", "Index", "Progress")
+                    @Html.LiNavActionLink("Manage Categories", "Index", "Categories")
+                    @Html.LiNavActionLink("Manage Goals", "Index", "GoalManagement")
+                </ul>
+                
+                @Html.Partial("_LoginPartial")
+            </div>           
+        </div>
+    </div>
+    
+        <div class="container" id="body-content">
+            @RenderSection("breadcrumbs", false)
+
+            @RenderBody()            
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>Made by <a href="http://www.houseofhawkins.com">Jon Hawkins, House of Hawkins</a></p>               
+            </div>
+        </footer>
+        <script src="~/Scripts/jquery-1.10.2.js"></script>
+        <script src="~/Scripts/jquery-ui-1.10.2.js"></script>
+        <script src="~/Scripts/bootstrap.js"></script>
+        <script src="~/Scripts/bootstrap-datepicker.js"></script>
+        <script src="~/Scripts/jquery.magnific-popup.js"></script>
+        <script src="~/Scripts/tracker.js"></script>
+
+        @RenderSection("scripts", false)
+        @Html.RenderResources("bottomScripts")
+</body>
+</html>

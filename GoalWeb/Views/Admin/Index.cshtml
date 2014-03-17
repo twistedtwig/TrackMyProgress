@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Administration Area";
+}
+
+@section breadcrumbs
+{
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li class="active">Admin</li>
+    </ul>
+}
+
+<div class="page-header">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="">
+            @using (Html.BeginForm("CreateResetUser", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" class="btn btn-default btn-primary" value="Create / Reset Test User" />
+            }
+        </div>
+    </div>
+</div>

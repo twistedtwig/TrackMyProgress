@@ -1,0 +1,16 @@
+﻿@model GoalSelectorModel
+
+@{
+    var goals = new SelectList(Model.Goals, "Id", "Name");
+}
+
+<div class="row">
+    <div class="well">
+        <form class="form-horizontal">
+            <fieldset>
+                @Html.BootStrapDropDownListForAndLabelFor(m => m.GoalId, goals, new { id = "goalSelectorDropDown" }, "Select Goal", 3, 9)
+            </fieldset>
+        </form>
+
+    </div>
+</div>

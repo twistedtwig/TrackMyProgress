@@ -1,0 +1,8 @@
+﻿@model GoalIterationSummary
+
+<div class="row">
+    <div class="well">
+        <p>You have achieved @Model.Percentage% of your target of reaching @Model.Target @(string.IsNullOrWhiteSpace(Model.UnitDescription) ? string.Empty : Model.UnitDescription) this @Model.DurationDesecription.</p>                            
+        <p>Currently it is at: @Model.Achieved</p>
+    </div>
+</div>

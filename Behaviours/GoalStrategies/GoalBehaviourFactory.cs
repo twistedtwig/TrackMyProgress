@@ -1,5 +1,5 @@
-﻿using Behaviours.Enums;
-using System;
+﻿using System;
+using Goals.Shared.Enums;
 
 namespace Behaviours.GoalStrategies
 {
