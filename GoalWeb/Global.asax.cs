@@ -1,4 +1,5 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using GoalManagement;
 using GoalRepository;
@@ -36,7 +37,7 @@ namespace GoalWeb
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container));
         }
 
-        protected void Application_Error()
+        protected void Application_Error(object sender, EventArgs e)
         {
             var exception = Server.GetLastError();
             var httpException = exception as HttpException;
@@ -63,7 +64,7 @@ namespace GoalWeb
 
             IController errorsController = new ErrorsController();
             var rc = new RequestContext(new HttpContextWrapper(Context), routeData);
-            errorsController.Execute(rc);
+            errorsController.Execute(rc);               
         }
     }
 }
