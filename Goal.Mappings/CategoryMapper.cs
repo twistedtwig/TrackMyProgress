@@ -12,20 +12,22 @@ namespace Goals.Mappings
             return new Category
             {
                 Id = entity.Id,
+                UserId = entity.UserId,
                 Name = entity.Name,
                 HexColour = entity.HexColour,
             };
         }
 
-        public static CategoryEntity Map(Category entity)
+        public static CategoryEntity Map(Category model)
         {
-            if (entity == null) return null;
+            if (model == null) return null;
 
             return new CategoryEntity
             {
-                Id = entity.Id,
-                Name = entity.Name,
-                HexColour = entity.HexColour,
+                Id = model.Id,
+                UserId = model.UserId,
+                Name = model.Name,
+                HexColour = model.HexColour,
             };
         }
     }

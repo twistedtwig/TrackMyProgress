@@ -123,3 +123,4 @@ UpgradeLog*.XML
 /Repository/Repository.Models/obj
 /Web/obj
 /Web/bin
+/*.suo
