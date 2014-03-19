@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System.Configuration;
+using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
@@ -29,8 +30,9 @@ namespace GoalWeb
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-                appId: "1455631314654520",
-                appSecret: "50dd24c4e2a69eee65cbfe122c406561");
+                appId: ConfigurationManager.AppSettings["UseFacebookAuthentication.appId"],
+                appSecret: ConfigurationManager.AppSettings["UseFacebookAuthentication.appSecret"]
+            );
 
             app.UseGoogleAuthentication();
         }

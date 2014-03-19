@@ -21,6 +21,7 @@ namespace Goals.Models.RequestResponse
         public CreateGoalRequest(Goal goal)
         {
             Id = goal.Id;
+            UserId = goal.UserId;
             Name = goal.Name;
             ShortName = goal.ShortName;
             HexColour = goal.HexColour;

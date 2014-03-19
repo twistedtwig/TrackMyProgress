@@ -23,6 +23,7 @@ namespace GoalWeb.Models
             ChangeValue = goal.ChangeValue;
             GoalType = goal.GoalType;
             Id = goal.Id;
+            UserId = goal.UserId;
             IntervalDuration = goal.IntervalDuration;
             Intervals = goal.Intervals;
             Name = goal.Name;
@@ -46,7 +47,7 @@ namespace GoalWeb.Models
         {
             var g = this as Goal;
             g.Category = Categories.FirstOrDefault(c => c.Id == CategoryId);
-
+            g.UserId = UserId;
             g.IntervalDuration = (GoalDurationType)GoalDurationTypeId;
             g.GoalType = (GoalType)GoalTypeId;
             g.BehaviourType = (GoalBehaviourType)GoalBehaviourTypeId;
