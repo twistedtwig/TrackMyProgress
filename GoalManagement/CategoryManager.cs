@@ -36,7 +36,7 @@ namespace GoalManagement
                 return result;
             }
 
-            var entity = _repository.First<CategoryEntity>(x => x.Name.Equals(request.Name, StringComparison.InvariantCultureIgnoreCase));
+            var entity = _repository.First<CategoryEntity>(x => x.Name.Equals(request.Name, StringComparison.InvariantCultureIgnoreCase) && x.UserId == request.UserId);
             if (entity != null)
             {
                 result.Success = false;

@@ -23,7 +23,7 @@ namespace GoalManagement
             var result = new CreateGoalResult();
             result.Request = request;
 
-            ValidateNames(result, request.Name, request.ShortName, request.Id);
+            ValidateNames(result, request.UserId, request.Name, request.ShortName, request.Id);
 
 
             if (!request.StartDate.HasValue)
@@ -89,7 +89,7 @@ namespace GoalManagement
             return result;
         }
 
-        internal void ValidateNames(CreationResult result, string name, string shortname, int id = 0)
+        internal void ValidateNames(CreationResult result, Guid userId, string name, string shortname, int id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -97,7 +97,7 @@ namespace GoalManagement
                 result.Messages.Add("Goals requires a name.");
             }
 
-            if (!IsGoalNameUnique<GoalEntity>(id, name, g => g.Name))
+            if (!IsGoalNameUnique<GoalEntity>(userId, id, name, g => g.Name))
             {
                 result.Success = false;
                 result.Messages.Add("Goals Name must be unique.");
@@ -106,26 +106,33 @@ namespace GoalManagement
             if (string.IsNullOrWhiteSpace(shortname) || shortname.Length > Goal.MaxShortNameLength)
             {
                 result.Success = false;
-                result.Messages.Add("Goals shortname is required and can't be more than " + Goal.MaxShortNameLength +
-                                    " characters.");
+                result.Messages.Add(string.Format("Goals shortname is required and can't be more than {0} characters.", Goal.MaxShortNameLength));
             }
 
-            if (!IsGoalNameUnique<GoalEntity>(id, shortname, g => g.ShortName))
+            if (!IsGoalNameUnique<GoalEntity>(userId, id, shortname, g => g.ShortName))
             {
                 result.Success = false;
                 result.Messages.Add("Goals short Name must be unique.");
             }
         }
 
-        internal bool IsGoalNameUnique<T>(int id, string name, Expression<Func<T, string>> action)
+        internal bool IsGoalNameUnique<T>(Guid userId, int id, string name, Expression<Func<T, string>> action)
         {
             var expression = (MemberExpression)action.Body;
 
-            var item = Expression.Parameter(typeof(T), "item");
-            var prop = Expression.Property(item, expression.Member.Name);
-            var propName = Expression.Constant(name);
-            var equal = Expression.Equal(prop, propName);
-            var lambda = Expression.Lambda<Func<T, bool>>(equal, item);
+            ParameterExpression parameterExpression = Expression.Parameter(typeof(T), "item");
+            MemberExpression memberExpressionName = Expression.PropertyOrField(parameterExpression, expression.Member.Name);
+            MemberExpression membExperssionUserId = Expression.PropertyOrField(parameterExpression, "UserId");
+
+            ConstantExpression valueExpressionName = Expression.Constant(name, typeof(string));
+            ConstantExpression valueExpressionUserId = Expression.Constant(userId, typeof(Guid));
+
+            BinaryExpression binaryExpressionName = Expression.Equal(memberExpressionName, valueExpressionName);
+            BinaryExpression binaryExpressionUserId = Expression.Equal(membExperssionUserId, valueExpressionUserId);
+            
+            Expression andExpression = Expression.AndAlso(binaryExpressionName, binaryExpressionUserId);
+            var lambda = Expression.Lambda<Func<T, bool>>(andExpression, parameterExpression);
+
             var allGoalsWithName = _goalRepository.All<T>().AsQueryable().Where(lambda);
 
             if (id == 0)
@@ -250,7 +257,7 @@ namespace GoalManagement
                 result.Messages.Add("Requires a Category");
             }
 
-            ValidateNames(result, request.Name, request.ShortName);
+            ValidateNames(result, request.UserId, request.Name, request.ShortName);
             ValidateGoalAndBehaviourType(result, request.GoalTypeId, request.GoalBehaviourTypeId);
         }
     }
