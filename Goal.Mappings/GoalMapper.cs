@@ -42,7 +42,7 @@ namespace Goals.Mappings
                 Name = string.IsNullOrWhiteSpace(model.Name) ? string.Empty : model.Name,
                 UserId = model.UserId,
 
-                StartDate = model.StartDate,
+                StartDate = model.StartDate.ToUniversalTime(),
                 ShortName = model.ShortName,
                 HexColour = model.HexColour,
                 Category = CategoryMapper.Map(model.Category),
