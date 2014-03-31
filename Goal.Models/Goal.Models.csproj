@@ -55,7 +55,7 @@
     <Compile Include="RequestResponse\CreateGoalFromTarget.cs" />
     <Compile Include="RequestResponse\CreateGoalFromTargetResult.cs" />
     <Compile Include="RequestResponse\CreateGoalRequest.cs" />
-    <Compile Include="RequestResponse\CreateGoalResult.cs" />
+    <Compile Include="RequestResponse\ProcessingResult.cs" />
     <Compile Include="RequestResponse\GetTrackingSummaryRequest.cs" />
     <Compile Include="RequestResponse\SaveResult.cs" />
     <Compile Include="TrackingSummary.cs" />

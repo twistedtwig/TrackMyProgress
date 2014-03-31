@@ -17,13 +17,13 @@
 
 @Html.AddResource(@<script type="text/javascript">
 
-        $(document).ready(function () {
-            $('#StartDate').datepicker({
-                format: 'dd/mm/yyyy',
-            });
-            
-        });        
-    </script>, "bottomScripts")
+                       $(document).ready(function () {
+                           $('#StartDate').datepicker({
+                               format: 'dd/mm/yyyy',
+                           });
+
+                       });
+</script>, "bottomScripts")
 
 <div class="page-header">
     <h2>@ViewBag.Title</h2>
@@ -34,52 +34,49 @@
 @Html.RenderResources("errors")
 
 <div class="row">
-    <div class="col-lg-6">
-        <div class="well">
-            @using (Html.BeginForm("CreateGoal", "GoalManagement", FormMethod.Post, new { @class = "form-horizontal" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
+    <div class="col-md-12">
+        @using (Html.BeginForm("CreateGoal", "GoalManagement", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
     
-                for (int i = 0; i < Model.Categories.Count; i++)
-                {
-                    @Html.HiddenFor(x => x.Categories[i].Id)     
-                    @Html.HiddenFor(x => x.Categories[i].Name)     
-                }
-        
-                <fieldset>
-                    
-                    @Html.BootStrapEditorAndLabelFor(model => model.Name, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.ShortName, 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 3, 8)
-
-                    <hr />                    
-
-                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete="off", @class="colourpicker" }, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete="off" }, 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 3, 8)
-
-                    <hr />                    
-                    
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 3, 8)
-                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 3, 8)
-
-                    @Html.BootStrapEditorAndLabelFor(model => model.ChangeValue, 3, 8)
-                    @Html.BootStrapEditorAndLabelFor(model => model.FirstIterationTarget, 3, 8)
-
-                    
-
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-3">
-                            <input type="submit" value="Create Goal" class="btn btn-success" />
-                        </div>
-                    </div>
-                </fieldset>
+            for (int i = 0; i < Model.Categories.Count; i++)
+            {
+            @Html.HiddenFor(x => x.Categories[i].Id)     
+            @Html.HiddenFor(x => x.Categories[i].Name)     
             }
+        
+            <fieldset>
+
+                <div class="col-md-6">
+                    @Html.BootStrapEditorAndLabelFor(model => model.Name, 4, 7)
+                    @Html.BootStrapDropDownListForAndLabelFor(model => model.CategoryId, cats, "Category", 4, 7)
+
+                    @Html.BootStrapEditorAndLabelFor(model => model.StartDate, new { autocomplete = "off" }, 4, 7)
+                    @Html.BootStrapEditorAndLabelFor(model => model.UnitDescription, 4, 7)
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalTypeId, typeof(GoalType), "Goal Type", 4, 7)
+                    @Html.BootStrapEditorAndLabelFor(model => model.ChangeValue, 4, 7)
+                </div>
+
+                <div class="col-md-6">
+                    @Html.BootStrapEditorAndLabelFor(model => model.ShortName, 4, 7)
+                    @Html.BootStrapEditorAndLabelFor(model => model.HexColour, new { autocomplete = "off", @class = "colourpicker" }, 4, 7)
+
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalDurationTypeId, typeof(GoalDurationType), "Duration", 4, 7)
+                    <hr class="hrBr" />
+                    @Html.BootStrapDropDownListForAndLabelEnumFor(model => model.GoalBehaviourTypeId, typeof(GoalBehaviourType), "Goal behaviour", 4, 7)
+                    @Html.BootStrapEditorAndLabelFor(model => model.FirstIterationTarget, 4, 7)
+                </div>
+
+                <div class="form-group">
+                    <div class="">
+                        <input type="submit" value="Create Goal" class="btn btn-success" />
+                    </div>
+                </div>
+            </fieldset>
+        }
 
 
-        </div>
     </div>
 </div>
 

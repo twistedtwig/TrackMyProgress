@@ -29,49 +29,49 @@ namespace GoalManagement
             if (!request.StartDate.HasValue)
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a start date.");
+                result.AddMessage("Goals requires a start date.", "StartDate");
             }
             else if (request.StartDate.Value.Equals(DateTime.MinValue))
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a start date.");
+                result.AddMessage("Goals requires a start date.", "StartDate");
             }
 
             if (request.UserId.Equals(Guid.Empty))
             {
                 result.Success = false;
-                result.Messages.Add("Goals require a User Id.");
+                result.AddMessage("Goals require a User Id.", "UserId");
             }
 
             if (request.CategoryId < 1)
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a category.");
+                result.AddMessage("Goals requires a category.", "CategoryId");
             }
 
 
             if (request.GoalTypeId < 1)
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a Goal Type.");
+                result.AddMessage("Goals requires a Goal Type.", "GoalTypeId");
             }
 
             if (request.GoalDurationTypeId < 1)
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a Goal Duration Length.");
+                result.AddMessage("Goals requires a Goal Duration Length.", "GoalDurationTypeId");
             }
 
             if (request.GoalBehaviourTypeId < 1)
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a Goal Behaviour Type.");
+                result.AddMessage("Goals requires a Goal Behaviour Type.", "GoalBehaviourTypeId");
             }
 
             if ((GoalBehaviourType)request.GoalBehaviourTypeId != GoalBehaviourType.None && request.ChangeValue == 0)
             {
                 result.Success = false;
-                result.Messages.Add("When a Goals behaviour is not NONE the change value can not be zero.");
+                result.AddMessage("When a Goals behaviour is not NONE the change value can not be zero.", "GoalBehaviourTypeId");
             }
 
             //only want to check this if all else is good, otherwise get silly errors on the client.
@@ -82,37 +82,37 @@ namespace GoalManagement
                 if (cat == null)
                 {
                     result.Success = false;
-                    result.Messages.Add("Invalid category ID: " + request.CategoryId);
+                    result.AddMessage("Invalid category ID: " + request.CategoryId, "CategoryId");
                 }
             }
 
             return result;
         }
 
-        internal void ValidateNames(CreationResult result, Guid userId, string name, string shortname, int id = 0)
+        internal void ValidateNames(ProcessingResult result, Guid userId, string name, string shortname, int id = 0)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 result.Success = false;
-                result.Messages.Add("Goals requires a name.");
+                result.AddMessage("Goals requires a name.", "Name");
             }
 
             if (!IsGoalNameUnique<GoalEntity>(userId, id, name, g => g.Name))
             {
                 result.Success = false;
-                result.Messages.Add("Goals Name must be unique.");
+                result.AddMessage("Goals Name must be unique.", "Name");
             }
 
             if (string.IsNullOrWhiteSpace(shortname) || shortname.Length > Goal.MaxShortNameLength)
             {
                 result.Success = false;
-                result.Messages.Add(string.Format("Goals shortname is required and can't be more than {0} characters.", Goal.MaxShortNameLength));
+                result.AddMessage(string.Format("Goals shortname is required and can't be more than {0} characters.", Goal.MaxShortNameLength), "ShortName");
             }
 
             if (!IsGoalNameUnique<GoalEntity>(userId, id, shortname, g => g.ShortName))
             {
                 result.Success = false;
-                result.Messages.Add("Goals short Name must be unique.");
+                result.AddMessage("Goals short Name must be unique.", "ShortName");
             }
         }
 
@@ -165,7 +165,7 @@ namespace GoalManagement
             return false;
         }
 
-        internal void ValidateGoalAndBehaviourType(CreationResult result, int goalTypeId, int goalBehaviourTypeId)
+        internal void ValidateGoalAndBehaviourType(ProcessingResult result, int goalTypeId, int goalBehaviourTypeId)
         {
             if (goalTypeId == (int)GoalType.ReachSomething)
             {
@@ -173,8 +173,8 @@ namespace GoalManagement
                     goalBehaviourTypeId != (int)GoalBehaviourType.IncrementValue)
                 {
                     result.Success = false;
-                    result.Messages.Add("Invalid goal behaviour type.");
-                    result.Messages.Add("Goal Type Reach something is designed to increment values.");
+                    result.AddMessage("Invalid goal behaviour type.", "goalBehaviourTypeId");
+                    result.AddMessage("Goal Type Reach something is designed to increment values.", "goalTypeId");
                 }
             }
 
@@ -185,8 +185,8 @@ namespace GoalManagement
                 if (goalBehaviourTypeId != (int)GoalBehaviourType.None)
                 {
                     result.Success = false;
-                    result.Messages.Add("Invalid goal behaviour type.");
-                    result.Messages.Add("Goal Type Reach something is designed change a value.");
+                    result.AddMessage("Invalid goal behaviour type.", "goalBehaviourTypeId");
+                    result.AddMessage("Goal Type Reach something is designed change a value.", "goalTypeId");
                 }
             }
 
@@ -196,8 +196,8 @@ namespace GoalManagement
                     goalBehaviourTypeId != (int)GoalBehaviourType.ReduceValue)
                 {
                     result.Success = false;
-                    result.Messages.Add("Invalid goal behaviour type.");
-                    result.Messages.Add("Goal Type Reduce something is designed reduce a value.");
+                    result.AddMessage("Invalid goal behaviour type.", "goalBehaviourTypeId");
+                    result.AddMessage("Goal Type Reduce something is designed reduce a value.", "goalTypeId");
                 }
             }
         }
@@ -207,54 +207,54 @@ namespace GoalManagement
             if (!request.TargetDate.HasValue)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a target Date");
+                result.AddMessage("Requires a target Date", "TargetDate");
             }
             else if (request.TargetDate.Value <= DateTime.Now)
             {
                 result.Success = false;
-                result.Messages.Add("Target Date must be in the future");
+                result.AddMessage("Target Date must be in the future", "TargetDate");
             }
 
             if (!request.TargetValue.HasValue)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a target value");
+                result.AddMessage("Requires a target value", "TargetValue");
             }
 
             if (!request.CurrentValue.HasValue)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a current value");
+                result.AddMessage("Requires a current value", "CurrentValue");
             }
 
             if (string.IsNullOrWhiteSpace(request.UnitDescription))
             {
                 result.Success = false;
-                result.Messages.Add("Requires a unit description");
+                result.AddMessage("Requires a unit description", "UnitDescription");
             }
 
             if (request.GoalDurationTypeId <= 0)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a valid Goal Duration");
+                result.AddMessage("Requires a valid Goal Duration", "GoalDurationTypeId");
             }
 
             if (request.GoalTypeId <= 0)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a valid Goal Type");
+                result.AddMessage("Requires a valid Goal Type", "GoalTypeId");
             }
 
             if (request.GoalBehaviourTypeId <= 0)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a valid Goal Behaviour");
+                result.AddMessage("Requires a valid Goal Behaviour", "GoalBehaviourTypeId");
             }
 
             if (request.CategoryId <= 0)
             {
                 result.Success = false;
-                result.Messages.Add("Requires a Category");
+                result.AddMessage("Requires a Category", "CategoryId");
             }
 
             ValidateNames(result, request.UserId, request.Name, request.ShortName);

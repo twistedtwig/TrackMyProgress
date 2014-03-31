@@ -1,7 +1,7 @@
 ﻿
 namespace Goals.Models.RequestResponse
 {
-    public class CreateGoalFromTargetResult : CreationResult
+    public class CreateGoalFromTargetResult : ProcessingResult
     {
         
     }

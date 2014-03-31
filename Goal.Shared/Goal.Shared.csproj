@@ -43,6 +43,7 @@
     <Compile Include="Enums\GoalBehaviourType.cs" />
     <Compile Include="Enums\GoalDurationType.cs" />
     <Compile Include="Enums\GoalType.cs" />
+    <Compile Include="Exceptions\ModelProcessingException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

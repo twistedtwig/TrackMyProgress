@@ -36,7 +36,7 @@ namespace GoalManagement
 
             result.Goal = GoalMapper.Map(goalEntity);
             result.Success = true;
-            result.Messages.Add("The Goal was created successfully");
+            result.AddMessage("The Goal was created successfully");
             return result;
         }
 
@@ -76,7 +76,10 @@ namespace GoalManagement
             if (!validation.Success)
             {
                 result.Success = false;
-                result.Messages.AddRange(validation.Messages);
+                foreach (var message in validation.Messages)
+                {
+                    result.AddMessage(message);
+                }
             }
             else
             {
@@ -401,7 +404,7 @@ namespace GoalManagement
             }
 
             result.Success = true;
-            result.Messages.Add("The Goal was created successfully");
+            result.AddMessage("The Goal was created successfully");
             return result;
         }
 

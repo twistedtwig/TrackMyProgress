@@ -51,6 +51,8 @@ namespace GoalWeb.Controllers
                 return RedirectToAction("Index");
             }
 
+            ModelProcessingExpectionHandler.Consume(ModelState, result.ProcessingException);
+
             return View("CreateGoalResult", result);
         }
 
