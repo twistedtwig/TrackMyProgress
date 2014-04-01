@@ -206,6 +206,7 @@ namespace GoalManagement
 
                 iteration.Entries.Remove(entry);
                 GoalUtilities.UpdateIterationValues(iteration);
+                uow.Remove(entry);
                 uow.Update(goalEntity);
                 return true;
             }
