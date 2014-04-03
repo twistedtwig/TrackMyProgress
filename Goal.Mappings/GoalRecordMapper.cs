@@ -1,5 +1,7 @@
-﻿using EntityModels;
+﻿using System.Collections.Generic;
+using EntityModels;
 using Goals.Models;
+using Goals.Shared.Extensions;
 
 namespace Goals.Mappings
 {
@@ -13,7 +15,7 @@ namespace Goals.Mappings
             {
                 Id = entity.Id,
                 Amount = entity.Amount,
-                Date = entity.Date
+                Date = entity.Date.ConvertToLocal()
             };
         }
 
@@ -25,8 +27,26 @@ namespace Goals.Mappings
             {
                 Id = model.Id,
                 Amount = model.Amount,
-                Date = model.Date
+                Date = model.Date.ToUniversalTime()
             };
+        }
+
+
+        public static void ConvertToLocalDate(GoalRecordEntity entity)
+        {
+            if(entity == null) return;
+
+            entity.Date = entity.Date.ConvertToLocal();
+        }
+
+        public static void ConvertToLocalDate(IList<GoalRecordEntity> entities)
+        {
+            if (entities == null) return;
+
+            foreach (var entity in entities)
+            {
+                ConvertToLocalDate(entity);
+            }
         }
     }
 }

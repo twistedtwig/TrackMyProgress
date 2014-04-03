@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Behaviours.GoalBehaviours;
 using Behaviours.GoalStrategies;
 using EntityModels;
 using Goals.Shared.Enums;
+using Goals.Shared.Extensions;
 
 namespace Goals.Mappings
 {
@@ -17,7 +19,7 @@ namespace Goals.Mappings
                 Id = entity.Id,
                 UserId = entity.UserId,
                 Name = entity.Name,
-                StartDate = entity.StartDate,
+                StartDate = entity.StartDate.ConvertToLocal(),
                 ShortName = entity.ShortName,
                 HexColour = entity.HexColour,
                 Category = CategoryMapper.Map(entity.Category),
@@ -54,6 +56,24 @@ namespace Goals.Mappings
 
                 Intervals = model.Intervals.Select(GoalIterationMapper.Map).OrderBy(i => i.StartDate).ToList()
             };
+        }
+
+        public static void ConvertToLocalDate(GoalEntity entity)
+        {
+            if (entity == null) return;
+
+            entity.StartDate = entity.StartDate.ConvertToLocal();
+            GoalIterationMapper.ConvertToLocalDate(entity.Intervals);
+        }
+
+        public static void ConvertToLocalDate(IList<GoalEntity> entities)
+        {
+            if(entities == null || !entities.Any()) return;
+
+            foreach (var entity in entities)
+            {
+                ConvertToLocalDate(entity);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using EntityModels;
+﻿using System.Collections.Generic;
+using EntityModels;
 using Goals.Models;
 using System.Linq;
+using Goals.Shared.Extensions;
 
 namespace Goals.Mappings
 {
@@ -14,8 +16,8 @@ namespace Goals.Mappings
             {
                 Id = entity.Id,
                 Achieved = entity.Achieved,
-                StartDate = entity.StartDate,
-                EndDate = entity.EndDate,
+                StartDate = entity.StartDate.ConvertToLocal(),
+                EndDate = entity.EndDate.ConvertToLocal(),
                 Target = entity.Target,
                 Percentage = entity.Percentage,
 
@@ -31,13 +33,35 @@ namespace Goals.Mappings
             {
                 Id = model.Id,
                 Achieved = model.Achieved,
-                StartDate = model.StartDate,
-                EndDate = model.EndDate,
+                StartDate = model.StartDate.ToUniversalTime(),
+                EndDate = model.EndDate.ToUniversalTime(),
                 Target = model.Target,
                 Percentage = model.Percentage,
 
                 Entries = model.Entries.Select(GoalRecordMapper.Map).ToList()
             };
+        }
+
+
+
+        public static void ConvertToLocalDate(GoalIterationEntity entity)
+        {
+            if (entity == null) return;
+
+            entity.StartDate = entity.StartDate.ConvertToLocal();
+            entity.EndDate= entity.EndDate.ConvertToLocal();
+
+            GoalRecordMapper.ConvertToLocalDate(entity.Entries);
+        }
+
+        public static void ConvertToLocalDate(IList<GoalIterationEntity> entities)
+        {
+            if (entities == null) return;
+
+            foreach (GoalIterationEntity entity in entities)
+            {
+                ConvertToLocalDate(entity);
+            }
         }
     }
 }

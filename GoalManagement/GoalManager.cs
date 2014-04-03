@@ -6,6 +6,7 @@ using Goals.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Goals.Shared.Extensions;
 using RepositoryInterfaces;
 
 namespace GoalManagement
@@ -120,28 +121,31 @@ namespace GoalManagement
 
         public GoalIteration GetCurrentIteration(Guid userId, int goalId, DateTime currentDate)
         {
+            var localCurrentDate = currentDate.ConvertToLocal();
             var goal = GoalMapper.Map(_repository.Get<GoalEntity>(goalId));
             if (goal == null || !goal.UserId.Equals(userId)) return null;
 
-            return GoalUtilities.GetCurrentIteration(goal, currentDate);
+            return GoalUtilities.GetCurrentIteration(goal, localCurrentDate);
         }
 
 
 
         public bool AddEntry(Guid userId, int goalId, int iterationId, DateTime currentDate, double value)
         {
+            var localCurrentDate = currentDate.ConvertToLocal();
+
             using (var uow = _repository.CreateUnitOfWork())
             {
                 var goalEntity = uow.Get<GoalEntity>(goalId);
                 if (goalEntity == null || !goalEntity.UserId.Equals(userId)) return false;
 
                 var goal = GoalMapper.Map(goalEntity);
-                goal = GoalUtilities.EnsureGoalHasAllIterations(goal, currentDate);
+                goal = GoalUtilities.EnsureGoalHasAllIterations(goal, localCurrentDate);
 
-                var iteration = GoalUtilities.GetCurrentIteration(goal, currentDate);
+                var iteration = GoalUtilities.GetCurrentIteration(goal, localCurrentDate);
                 if (iteration == null) return false;
 
-                iteration.Entries.Add(new GoalRecord { Amount = value, Date = currentDate });
+                iteration.Entries.Add(new GoalRecord { Amount = value, Date = localCurrentDate });
 
                 //update the iteration values so that the totals are correct.
                 GoalUtilities.UpdateIterationValues(iteration);
@@ -154,6 +158,9 @@ namespace GoalManagement
         public IList<TrackingSummary> GetTrackingInfoSummary(GetTrackingSummaryRequest request)
         {
             var goals = _repository.Get<GoalEntity>(x => x.UserId.Equals(request.UserId));
+
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goals);
             
             return (from goal in goals
                     from interval in goal.Intervals
@@ -172,6 +179,9 @@ namespace GoalManagement
         public IterationDetail GetIterationDetail(Guid userId, int iterationEntryId)
         {
             var goals = _repository.Get<GoalEntity>(x => x.UserId.Equals(userId));
+
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goals);
 
             return (from goal in goals
                     from interval in goal.Intervals
@@ -223,6 +233,9 @@ namespace GoalManagement
                 return goalSummary;
             }
 
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goal);
+
             goalSummary.Title = goal.Name;
             goalSummary.GoalId = goal.Id;
             GoalUtilities.CalcuateIterations(goal.Intervals, goalSummary);
@@ -233,6 +246,9 @@ namespace GoalManagement
         {
             var goal = _repository.First<GoalEntity>(x => x.Id == goalId);
             if (goal == null || !goal.UserId.Equals(userId)) return null;
+
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goal);
 
             var detail = new IterationDetailInformationModel();
             detail.GoalId = goal.Id;
@@ -274,6 +290,9 @@ namespace GoalManagement
                 return goalSummary;
             }
 
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goal);
+
             var iterationList = GoalUtilities.GetGoalIterationEntities(iterationIds, goal);
 
             GoalUtilities.CalcuateIterations(iterationList, goalSummary);
@@ -285,6 +304,9 @@ namespace GoalManagement
         {
             var goal = _repository.First<GoalEntity>(g => g.Id == goalId && g.UserId.Equals(userId));
             if (goal == null || iterationIds == null || iterationIds.Length == 0) return null;
+
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goal);
 
             var titles = goal.Intervals.Where(i => iterationIds.Contains(i.Id)).Select(interval => interval.StartDate.ToShortDateString() + " - " + interval.EndDate.ToShortDateString()).ToList();
 
@@ -316,6 +338,9 @@ namespace GoalManagement
         public IterationSummaryReportViewModel GetIterationsReport(Guid userId, int goalId, int[] iterationIds)
         {
             var goal = _repository.First<GoalEntity>(g => g.Id == goalId && g.UserId.Equals(userId));
+            //ensure dates are in local format
+            GoalMapper.ConvertToLocalDate(goal);
+
             if (goal== null || iterationIds == null || iterationIds.Length == 0) return null;
             
             var iterationList = GoalUtilities.GetGoalIterationEntities(iterationIds, goal);
@@ -323,7 +348,7 @@ namespace GoalManagement
 
             var reportModel = new IterationSummaryReportViewModel();
             reportModel.UnitDescription = goal.UnitDescription;
-            reportModel.Title = string.Format("{0} Iteration Summary: {1} to {2}", goal.Name, iterationList.First().StartDate.Date.ToShortDateString(), iterationList.Last().EndDate.Date.ToShortDateString());
+            reportModel.Title = string.Format("{0} Iteration Summary: {1} to {2}", goal.Name, iterationList.First().StartDate.ToShortDateString(), iterationList.Last().EndDate.Date.ToShortDateString());
 
             foreach (var entity in iterationList)
             {

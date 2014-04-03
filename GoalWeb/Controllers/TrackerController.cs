@@ -22,7 +22,7 @@ namespace GoalWeb.Controllers
 
         public ActionResult Index()
         {
-            return View(_goalManager.Goals(UserId).Where(g => g.StartDate <= DateTime.Now).ToList());
+            return View();
         }
 
         public ActionResult GoalSelector(DateTime currentDate)

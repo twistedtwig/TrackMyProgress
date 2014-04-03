@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using GoalManagement;
@@ -43,6 +45,9 @@ namespace GoalWeb
             var httpException = exception as HttpException;
             Response.Clear();
             Server.ClearError();
+
+            WriteToLog(httpException);
+
             var routeData = new RouteData();
             routeData.Values["controller"] = "Errors";
             routeData.Values["action"] = "General";
@@ -65,6 +70,24 @@ namespace GoalWeb
             IController errorsController = new ErrorsController();
             var rc = new RequestContext(new HttpContextWrapper(Context), routeData);
             errorsController.Execute(rc);               
+        }
+
+        private void WriteToLog(Exception ex)
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine(DateTime.Now.ToShortDateString() + DateTime.Now.ToShortTimeString());
+            builder.AppendLine(ex.Message);
+            builder.AppendLine(ex.StackTrace);
+            builder.AppendLine(Environment.NewLine);
+
+            WriteToLog(builder.ToString());
+        }
+
+        private void WriteToLog(string message)
+        {
+            string path = HttpContext.Current.Server.MapPath("~/log.txt");
+            File.AppendAllText(path, message);
+
         }
     }
 }
